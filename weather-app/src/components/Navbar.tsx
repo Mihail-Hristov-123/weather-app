@@ -3,7 +3,7 @@ import { Routes } from "../routes";
 
 export const Navbar = () => {
   return (
-    <nav className=" bg-amber-100 flex justify-around py-3.5 font-bold">
+    <nav className=" flex justify-around py-3.5 font-bold  text-black dark:bg-blue-950 dark:text-white">
       <NavLink to={Routes.HOME}>Home</NavLink>
       <NavLink to={Routes.FORECASTS}>All forecasts</NavLink>
       <NavLink to={Routes.FAVORITES}>Favorites</NavLink>

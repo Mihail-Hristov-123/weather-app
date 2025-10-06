@@ -8,11 +8,13 @@ import { Favorites } from "./pages/Favorites.tsx";
 import { NotFound } from "./pages/NotFound.tsx";
 import { Routes as RoutesEnum } from "./routes.ts";
 import { ThemeProvider } from "./contexts/ThemeContext.tsx";
+import { ThemeSwitcher } from "./components/ThemeSwitcher.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
     <ThemeProvider>
       <Navbar />
+      <ThemeSwitcher />
       <Routes>
         <Route path={RoutesEnum.HOME} element={<Home />} />
         <Route path="/" element={<Navigate to={RoutesEnum.HOME} />} />

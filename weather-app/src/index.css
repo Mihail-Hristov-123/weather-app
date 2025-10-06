@@ -9,3 +9,5 @@ a.active {
   border-bottom: 3px solid green;
   transition: border-bottom-width 0.4s ease;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));

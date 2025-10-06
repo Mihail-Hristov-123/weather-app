@@ -2,7 +2,7 @@ import { createRoot } from "react-dom/client";
 
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import { Navbar } from "./components/Navbar.tsx";
-import { Home } from "./pages/Home.tsx";
+import { Home } from "./pages/home/Home.tsx";
 import { Forecasts } from "./pages/Forecasts.tsx";
 import { Favorites } from "./pages/Favorites.tsx";
 import { NotFound } from "./pages/NotFound.tsx";

@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+html {
+  font-size: 16px;
+}
+
+a.active {
+  color: green;
+  border-bottom: 3px solid green;
+  transition: border-bottom-width 0.4s ease;
+}

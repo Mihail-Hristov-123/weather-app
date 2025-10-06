@@ -7,16 +7,21 @@ import { Forecasts } from "./pages/Forecasts.tsx";
 import { Favorites } from "./pages/Favorites.tsx";
 import { NotFound } from "./pages/NotFound.tsx";
 import { Routes as RoutesEnum } from "./routes.ts";
+import { ThemeProvider } from "./contexts/ThemeContext.tsx";
+import { ThemeSwitcher } from "./components/ThemeSwitcher.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
-    <Navbar />
-    <Routes>
-      <Route path={RoutesEnum.HOME} element={<Home />} />
-      <Route path="/" element={<Navigate to={RoutesEnum.HOME} />} />
-      <Route path={RoutesEnum.FORECASTS} element={<Forecasts />} />
-      <Route path={RoutesEnum.FAVORITES} element={<Favorites />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <ThemeProvider>
+      <Navbar />
+      <ThemeSwitcher />
+      <Routes>
+        <Route path={RoutesEnum.HOME} element={<Home />} />
+        <Route path="/" element={<Navigate to={RoutesEnum.HOME} />} />
+        <Route path={RoutesEnum.FORECASTS} element={<Forecasts />} />
+        <Route path={RoutesEnum.FAVORITES} element={<Favorites />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </ThemeProvider>
   </BrowserRouter>
 );

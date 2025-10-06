@@ -9,19 +9,23 @@ import { NotFound } from "./pages/NotFound.tsx";
 import { Routes as RoutesEnum } from "./routes.ts";
 import { ThemeProvider } from "./contexts/ThemeContext.tsx";
 import { ThemeSwitcher } from "./components/ThemeSwitcher.tsx";
+import { Provider } from "react-redux";
+import { store } from "./store.ts";
 
 createRoot(document.getElementById("root")!).render(
-  <BrowserRouter>
-    <ThemeProvider>
-      <Navbar />
-      <ThemeSwitcher />
-      <Routes>
-        <Route path={RoutesEnum.HOME} element={<Home />} />
-        <Route path="/" element={<Navigate to={RoutesEnum.HOME} />} />
-        <Route path={RoutesEnum.FORECASTS} element={<Forecasts />} />
-        <Route path={RoutesEnum.FAVORITES} element={<Favorites />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </ThemeProvider>
-  </BrowserRouter>
+  <Provider store={store}>
+    <BrowserRouter>
+      <ThemeProvider>
+        <Navbar />
+        <ThemeSwitcher />
+        <Routes>
+          <Route path={RoutesEnum.HOME} element={<Home />} />
+          <Route path="/" element={<Navigate to={RoutesEnum.HOME} />} />
+          <Route path={RoutesEnum.FORECASTS} element={<Forecasts />} />
+          <Route path={RoutesEnum.FAVORITES} element={<Favorites />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </ThemeProvider>
+    </BrowserRouter>
+  </Provider>
 );

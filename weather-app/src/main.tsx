@@ -11,7 +11,7 @@ import { ThemeProvider } from "./contexts/ThemeContext.tsx";
 import { ThemeSwitcher } from "./components/ThemeSwitcher.tsx";
 import { Provider } from "react-redux";
 import { store } from "./store.ts";
-import { Details } from "./pages/forecasts/Details.tsx";
+import { Details } from "./pages/forecasts/details/Details.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <Provider store={store}>

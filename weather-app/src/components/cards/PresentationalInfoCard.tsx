@@ -1,5 +1,4 @@
 import { FavoritesButton } from "../buttons/FavoritesButton";
-import { useFavorites } from "../../pages/favorites/useFavorites";
 import { InfoButton } from "../buttons/InfoButton";
 
 interface ForecastData {
@@ -19,17 +18,12 @@ interface ForecastData {
 }
 
 export const PresentationalInfoCard = ({ data }: { data: ForecastData }) => {
-  const { updateFavoriteStatus, checkIsFavorite } = useFavorites();
   const { location, current } = data;
   const { name: cityName } = location;
-  const isFavorite = checkIsFavorite(cityName);
 
   return (
     <section className=" bg-gray-400 w-1/3 flex flex-col items-center ">
-      <FavoritesButton
-        updateStatus={() => updateFavoriteStatus(cityName)}
-        isFavorite={isFavorite}
-      />
+      <FavoritesButton cityName={cityName} />
       <InfoButton cityName={cityName} />
       <h3>
         {cityName}, {location.region}, {location.country}

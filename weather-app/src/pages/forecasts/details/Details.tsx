@@ -3,6 +3,7 @@ import { useGetCurrentWeatherByCityQuery } from "../../../services/weatherApi";
 import { ErrorCard } from "../../../components/cards/ErrorCard";
 
 import { isWeatherInfo } from "../../../utils/isWeatherInfo";
+import { FavoritesButton } from "../../../components/buttons/FavoritesButton";
 
 export const Details = () => {
   const { id: cityName } = useParams();
@@ -47,6 +48,7 @@ export const Details = () => {
         <p>UV Index: {current.uv}</p>
         <p>Visibility: {current.vis_km} km</p>
       </div>
+      <FavoritesButton cityName={cityName} type="text" />
     </div>
   );
 };

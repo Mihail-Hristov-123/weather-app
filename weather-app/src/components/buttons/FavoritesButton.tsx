@@ -1,23 +1,34 @@
-import saveSVG from "../../assets/save.svg";
-import unsaveSVG from "../../assets/unsave.svg";
+import savedSVG from "../../assets/save.svg";
+import unsavedSVG from "../../assets/unsave.svg";
+import { useFavorites } from "../../pages/favorites/useFavorites";
 
 interface FavoritesButtonProps {
-  isFavorite: boolean;
-  updateStatus: () => void;
+  cityName: string;
+  type?: "icon" | "text";
 }
 
 export const FavoritesButton = ({
-  isFavorite,
-  updateStatus,
+  cityName,
+  type = "icon",
 }: FavoritesButtonProps) => {
+  const { checkIsFavorite, updateFavoriteStatus } = useFavorites();
+
+  const isFavorite = checkIsFavorite(cityName);
+  const handleClick = () => updateFavoriteStatus(cityName);
   return (
-    <button onClick={updateStatus}>
-      <img
-        className=" w-10 cursor-pointer"
-        src={isFavorite ? unsaveSVG : saveSVG}
-        alt={"floppy disc icon"}
-        title={isFavorite ? "unsave" : "save"}
-      />
+    <button onClick={handleClick} className=" cursor-pointer">
+      {type === "icon" ? (
+        <img
+          className=" w-10 cursor-pointer"
+          src={isFavorite ? unsavedSVG : savedSVG}
+          alt={"floppy disc icon"}
+          title={isFavorite ? "unsave" : "save"}
+        />
+      ) : isFavorite ? (
+        "Remove from favorites"
+      ) : (
+        "Add to favorites"
+      )}
     </button>
   );
 };

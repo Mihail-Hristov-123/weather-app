@@ -1,4 +1,4 @@
-import { InfoCard } from "../../components/cards/InfoCard";
+import { PresentationalInfoCard } from "../../components/cards/PresentationalInfoCard";
 import { ErrorCard } from "../../components/cards/ErrorCard";
 import { useWeatherSearch } from "./useWeatherSearch";
 
@@ -35,7 +35,7 @@ export const Home = () => {
       </div>
       {isError && <ErrorCard />}
       {isLoading && <p>Loading ...</p>}
-      {data && !isError && <InfoCard data={data} />}
+      {data && !isError && <PresentationalInfoCard data={data} />}
     </div>
   );
 };

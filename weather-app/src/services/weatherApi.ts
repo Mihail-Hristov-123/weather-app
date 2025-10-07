@@ -6,9 +6,12 @@ export const weatherApi = createApi({
   reducerPath: "weatherApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://api.weatherapi.com/v1" }),
   endpoints: (builder) => ({
-    getCurrentWeather: builder.query({
+    getCurrentWeatherByCity: builder.query({
       query: (city) => `current.json?key=${WEATHER_API_KEY}&q=${city}`,
     }),
   }),
 });
-export const { useGetCurrentWeatherQuery } = weatherApi;
+export const {
+  useGetCurrentWeatherByCityQuery,
+  useLazyGetCurrentWeatherByCityQuery,
+} = weatherApi;

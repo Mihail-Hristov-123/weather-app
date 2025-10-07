@@ -18,7 +18,7 @@ export const Home = () => {
         <h1 className=" text-center text-4xl">Welcome to Weather App</h1>
         <form onSubmit={handleSubmit}>
           <label className=" flex flex-col text-xl">
-            Checkout any city's current weather
+            Check out any city's current weather
             <input
               value={searchValue}
               minLength={2}

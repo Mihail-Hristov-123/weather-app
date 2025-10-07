@@ -1,23 +1,8 @@
+import type { WeatherInfo } from "../../types";
 import { FavoritesButton } from "../buttons/FavoritesButton";
 import { InfoButton } from "../buttons/InfoButton";
 
-interface ForecastData {
-  location: {
-    country: string;
-    name: string;
-    region: string;
-  };
-  current: {
-    condition: {
-      icon: string;
-      text: string;
-    };
-    feelslike_c: number;
-    temp_c: number;
-  };
-}
-
-export const PresentationalInfoCard = ({ data }: { data: ForecastData }) => {
+export const PresentationalInfoCard = ({ data }: { data: WeatherInfo }) => {
   const { location, current } = data;
   const { name: cityName } = location;
 

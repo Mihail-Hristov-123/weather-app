@@ -21,7 +21,8 @@ const searchSlice = createSlice({
       state.value = "";
     },
     addToHistory: (state, action: PayloadAction<string>) => {
-      state.history.push(action.payload);
+      if (!state.history.includes(action.payload))
+        state.history.push(action.payload);
     },
   },
 });

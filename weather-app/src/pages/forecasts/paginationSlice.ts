@@ -1,13 +1,14 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-
-import { CITIES_COUNT, ITEMS_PER_PAGE } from "../../global.settings";
+import { cities } from "../../utils/popularLocations";
 
 interface PaginationInfo {
   currentPage: number;
+  itemsPerPage: number;
 }
 
 const initialState: PaginationInfo = {
   currentPage: 1,
+  itemsPerPage: 10,
 };
 
 export const paginationSlice = createSlice({
@@ -15,7 +16,7 @@ export const paginationSlice = createSlice({
   initialState,
   reducers: {
     incrementPage: (state) => {
-      if (state.currentPage * ITEMS_PER_PAGE > CITIES_COUNT) return;
+      if (state.currentPage * state.itemsPerPage > cities.length) return;
       state.currentPage++;
     },
     decrementPage: (state) => {
@@ -25,9 +26,12 @@ export const paginationSlice = createSlice({
     setPage: (state, action: PayloadAction<number>) => {
       state.currentPage = action.payload;
     },
+    setItemsPerPage: (state, action: PayloadAction<number>) => {
+      state.itemsPerPage = action.payload;
+    },
   },
 });
 
 export default paginationSlice.reducer;
-export const { incrementPage, decrementPage, setPage } =
+export const { incrementPage, decrementPage, setPage, setItemsPerPage } =
   paginationSlice.actions;

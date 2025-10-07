@@ -1,7 +1,12 @@
 import { InfoCard } from "../../components/cards/InfoCard";
 import { useAppDispatch } from "../../typedHooks";
 
-import { decrementPage, incrementPage, setPage } from "./paginationSlice";
+import {
+  decrementPage,
+  incrementPage,
+  setItemsPerPage,
+  setPage,
+} from "./paginationSlice";
 import { usePagination } from "./usePagination";
 
 export const Forecasts = () => {
@@ -12,11 +17,28 @@ export const Forecasts = () => {
     incrementButtonDisabled,
     totalPages,
     currentPage,
+    itemsPerPage,
   } = usePagination();
+
+  const itemsPerPageChoices = [10, 20, 30, 50];
 
   return (
     <div className=" flex flex-col items-center">
       <h1>Forecasts for popular locations</h1>
+      <label>
+        Show{" "}
+        <select
+          name="shownItemsCount"
+          onChange={(e) => dispatch(setItemsPerPage(Number(e.target.value)))}
+        >
+          {itemsPerPageChoices.map((count) => (
+            <option value={count} selected={itemsPerPage === count}>
+              {count}
+            </option>
+          ))}
+        </select>
+      </label>
+
       <section className=" flex flex-wrap gap-x-6 gap-y-8 justify-around">
         {currentCities.map((city) => (
           <InfoCard cityName={city} />

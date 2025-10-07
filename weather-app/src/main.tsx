@@ -18,6 +18,7 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <ThemeProvider>
         <Navbar />
+
         <ThemeSwitcher />
         <Routes>
           <Route path={RoutesEnum.HOME} element={<Home />} />

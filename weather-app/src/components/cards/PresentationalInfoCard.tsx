@@ -1,5 +1,6 @@
-import { FavoritesButton } from "../FavoritesButton";
+import { FavoritesButton } from "../buttons/FavoritesButton";
 import { useFavorites } from "../../pages/favorites/useFavorites";
+import { InfoButton } from "../buttons/InfoButton";
 
 interface ForecastData {
   location: {
@@ -29,6 +30,7 @@ export const PresentationalInfoCard = ({ data }: { data: ForecastData }) => {
         updateStatus={() => updateFavoriteStatus(cityName)}
         isFavorite={isFavorite}
       />
+      <InfoButton cityName={cityName} />
       <h3>
         {cityName}, {location.region}, {location.country}
       </h3>

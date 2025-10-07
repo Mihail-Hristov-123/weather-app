@@ -1,5 +1,5 @@
-import saveSVG from "../assets/save.svg";
-import unsaveSVG from "../assets/unsave.svg";
+import saveSVG from "../../assets/save.svg";
+import unsaveSVG from "../../assets/unsave.svg";
 
 interface FavoritesButtonProps {
   isFavorite: boolean;

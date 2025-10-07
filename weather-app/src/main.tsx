@@ -4,7 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import { Navbar } from "./components/Navbar.tsx";
 import { Home } from "./pages/home/Home.tsx";
 import { Forecasts } from "./pages/Forecasts.tsx";
-import { Favorites } from "./pages/Favorites.tsx";
+import { Favorites } from "./pages/favorites/Favorites.tsx";
 import { NotFound } from "./pages/NotFound.tsx";
 import { Routes as RoutesEnum } from "./routes.ts";
 import { ThemeProvider } from "./contexts/ThemeContext.tsx";

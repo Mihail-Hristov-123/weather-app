@@ -1,3 +1,6 @@
+import saveSVG from "../assets/save.svg";
+import unsaveSVG from "../assets/unsave.svg";
+
 interface FavoritesButtonProps {
   isFavorite: boolean;
   updateStatus: () => void;
@@ -9,7 +12,12 @@ export const FavoritesButton = ({
 }: FavoritesButtonProps) => {
   return (
     <button onClick={updateStatus}>
-      {isFavorite ? "Remove from favorites" : "Add to favorites"}
+      <img
+        className=" w-10 cursor-pointer"
+        src={isFavorite ? unsaveSVG : saveSVG}
+        alt={"floppy disc icon"}
+        title={isFavorite ? "unsave" : "save"}
+      />
     </button>
   );
 };

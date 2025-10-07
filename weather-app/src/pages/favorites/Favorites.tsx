@@ -1,3 +1,4 @@
+import { InfoCard } from "../../components/cards/InfoCard";
 import { useFavorites } from "./useFavorites";
 
 export const Favorites = () => {
@@ -6,11 +7,13 @@ export const Favorites = () => {
   return (
     <div>
       <h1>Pinned locations</h1>
-      {favoriteLocations.length ? (
-        favoriteLocations.join(", ")
-      ) : (
-        <h3>You haven't pinned any locations yet</h3>
-      )}
+      <section className=" flex flex-wrap justify-around">
+        {favoriteLocations.length ? (
+          favoriteLocations.map((location) => <InfoCard cityName={location} />)
+        ) : (
+          <h3>You haven't pinned any locations yet.</h3>
+        )}
+      </section>
     </div>
   );
 };

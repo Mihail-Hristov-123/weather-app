@@ -8,10 +8,21 @@ export const useFavorites = () => {
   const removeOneFavorite = (cityName: string) => dispatch(removeOne(cityName));
   const removeAllFavorites = () => dispatch(removeAll());
 
+  const updateFavoriteStatus = (cityName: string) => {
+    const isFavorite = checkIsFavorite(cityName);
+    dispatch(isFavorite ? removeOne(cityName) : add(cityName));
+  };
+
+  const checkIsFavorite = (cityName: string) => {
+    return favoriteLocations.includes(cityName);
+  };
+
   return {
     favoriteLocations,
     addFavorite,
     removeAllFavorites,
     removeOneFavorite,
+    updateFavoriteStatus,
+    checkIsFavorite,
   };
 };

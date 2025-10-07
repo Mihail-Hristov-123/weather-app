@@ -2,10 +2,12 @@ import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 type SearchSliceType = {
   value: string;
+  history: string[];
 };
 
 const initialState: SearchSliceType = {
   value: "",
+  history: [],
 };
 
 const searchSlice = createSlice({
@@ -18,9 +20,12 @@ const searchSlice = createSlice({
     reset: (state) => {
       state.value = "";
     },
+    addToHistory: (state, action: PayloadAction<string>) => {
+      state.history.push(action.payload);
+    },
   },
 });
 
-export const { update, reset } = searchSlice.actions;
+export const { update, reset, addToHistory } = searchSlice.actions;
 
 export default searchSlice.reducer;

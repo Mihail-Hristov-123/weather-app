@@ -1,10 +1,12 @@
 import type { FormEvent } from "react";
 import { useLazyGetCurrentWeatherByCityQuery } from "../../services/weatherApi";
 import { useAppDispatch, useAppSelector } from "../../typedHooks";
-import { reset, update } from "./searchSlice";
+import { addToHistory, reset, update } from "./searchSlice";
 
 export const useWeatherSearch = () => {
-  const searchValue = useAppSelector((state) => state.search.value);
+  const { value: searchValue, history: searchHistory } = useAppSelector(
+    (state) => state.search
+  );
 
   const dispatch = useAppDispatch();
 
@@ -15,6 +17,7 @@ export const useWeatherSearch = () => {
     e.preventDefault();
     const query = searchValue.trim();
     dispatch(reset());
+    dispatch(addToHistory(query));
     await trigger(query);
   };
 
@@ -23,6 +26,7 @@ export const useWeatherSearch = () => {
 
   return {
     searchValue,
+    searchHistory,
     handleSubmit,
     dispatch,
     isLoading,

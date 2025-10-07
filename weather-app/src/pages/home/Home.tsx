@@ -9,6 +9,7 @@ export const Home = () => {
     isError,
     isLoading,
     data,
+    searchHistory,
     handleSearchChange,
   } = useWeatherSearch();
 
@@ -20,6 +21,7 @@ export const Home = () => {
           <label className=" flex flex-col text-xl">
             Check out any city's current weather
             <input
+              list="recent"
               value={searchValue}
               minLength={2}
               required
@@ -27,6 +29,10 @@ export const Home = () => {
               className="border-2  rounded-4xl px-1 py-0.5"
               type="search"
             />
+            <datalist id="recent">
+              {searchHistory.length &&
+                searchHistory.map((value) => <option value={value} />)}
+            </datalist>
           </label>
           <button type="submit" disabled={isLoading}>
             {isLoading ? "Loading..." : "Search"}

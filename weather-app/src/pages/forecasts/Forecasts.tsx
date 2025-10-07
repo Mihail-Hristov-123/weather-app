@@ -1,13 +1,18 @@
 import { InfoCard } from "../../components/cards/InfoCard";
 import { useAppDispatch } from "../../typedHooks";
 
-import { decrementPage, incrementPage } from "./paginationSlice";
+import { decrementPage, incrementPage, setPage } from "./paginationSlice";
 import { usePagination } from "./usePagination";
 
 export const Forecasts = () => {
   const dispatch = useAppDispatch();
-  const { currentCities, decrementButtonDisabled, incrementButtonDisabled } =
-    usePagination();
+  const {
+    currentCities,
+    decrementButtonDisabled,
+    incrementButtonDisabled,
+    totalPages,
+    currentPage,
+  } = usePagination();
 
   return (
     <div className=" flex flex-col items-center">
@@ -31,6 +36,19 @@ export const Forecasts = () => {
           Back
         </button>
 
+        <select
+          name="page"
+          onChange={(e) => dispatch(setPage(Number(e.target.value)))}
+        >
+          {[...Array(totalPages)].map((_, i) => {
+            const value = i + 1;
+            return (
+              <option selected={currentPage === value} value={value}>
+                {value}
+              </option>
+            );
+          })}
+        </select>
         <button
           disabled={incrementButtonDisabled}
           onClick={() => dispatch(incrementPage())}

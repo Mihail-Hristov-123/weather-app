@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 import { CITIES_COUNT, ITEMS_PER_PAGE } from "../../global.settings";
 
@@ -22,8 +22,12 @@ export const paginationSlice = createSlice({
       if (state.currentPage === 1) return;
       state.currentPage--;
     },
+    setPage: (state, action: PayloadAction<number>) => {
+      state.currentPage = action.payload;
+    },
   },
 });
 
 export default paginationSlice.reducer;
-export const { incrementPage, decrementPage } = paginationSlice.actions;
+export const { incrementPage, decrementPage, setPage } =
+  paginationSlice.actions;

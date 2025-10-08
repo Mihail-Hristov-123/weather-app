@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../typedHooks";
-import { cities } from "../../utils/popularLocations";
+import { cities } from "../../utils/cities";
 
 export const usePagination = () => {
   const { currentPage, itemsPerPage } = useAppSelector(

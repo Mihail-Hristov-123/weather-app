@@ -1,9 +1,9 @@
 import { useParams } from "react-router";
-import { useGetCurrentWeatherByCityQuery } from "../../../services/weatherApi";
-import { ErrorCard } from "../../../components/cards/ErrorCard";
+import { useGetCurrentWeatherByCityQuery } from "@/services/weatherApi";
+import { ErrorCard } from "@/components/cards/subcards/ErrorCard";
 
-import { isWeatherInfo } from "../../../utils/isWeatherInfo";
-import { FavoritesButton } from "../../../components/buttons/FavoritesButton";
+import { isWeatherInfo } from "@/utils/isWeatherInfo";
+import { FavoritesButton } from "@/components/buttons/FavoritesButton";
 
 export const Details = () => {
   const { id: cityName } = useParams();

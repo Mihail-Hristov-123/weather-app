@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../typedHooks";
+import { useAppDispatch, useAppSelector } from "@/typedHooks";
 import { add, removeAll, removeOne } from "./favoritesSlice";
 
 export const useFavorites = () => {

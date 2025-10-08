@@ -1,6 +1,6 @@
 import type { FormEvent } from "react";
-import { useLazyGetCurrentWeatherByCityQuery } from "../../services/weatherApi";
-import { useAppDispatch, useAppSelector } from "../../typedHooks";
+import { useLazyGetCurrentWeatherByCityQuery } from "@/services/weatherApi";
+import { useAppDispatch, useAppSelector } from "@/typedHooks";
 import { addToHistory, reset, update } from "./searchSlice";
 
 export const useWeatherSearch = () => {

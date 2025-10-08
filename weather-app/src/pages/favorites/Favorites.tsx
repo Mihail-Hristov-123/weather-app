@@ -1,4 +1,4 @@
-import { InfoCard } from "../../components/cards/InfoCard";
+import { InfoCard } from "@/components/cards/InfoCard";
 import { useFavorites } from "./useFavorites";
 
 export const Favorites = () => {

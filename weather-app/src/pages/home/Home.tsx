@@ -1,7 +1,7 @@
-import { PresentationalInfoCard } from "../../components/cards/PresentationalInfoCard";
-import { ErrorCard } from "../../components/cards/ErrorCard";
+import { PresentationalInfoCard } from "@/components/cards/subcards/PresentationalInfoCard";
+import { ErrorCard } from "@/components/cards/subcards/ErrorCard";
 import { useWeatherSearch } from "./useWeatherSearch";
-import searchSVG from "../../assets/search.svg";
+import searchSVG from "@/assets/search.svg";
 
 export const Home = () => {
   const {

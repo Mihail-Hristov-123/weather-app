@@ -1,6 +1,6 @@
-import { useEffect, type ChangeEvent, type FormEvent } from "react";
-import { useAppDispatch, useAppSelector } from "../../typedHooks";
-import { cities } from "../../utils/cities";
+import { useEffect, type ChangeEvent } from "react";
+import { useAppDispatch, useAppSelector } from "@/typedHooks";
+import { cities } from "@/utils/cities";
 import { setItemsPerPage, setPage } from "./paginationSlice";
 
 export const usePagination = () => {
@@ -24,10 +24,7 @@ export const usePagination = () => {
   const incrementButtonDisabled = currentPage === totalPages;
 
   useEffect(() => {
-    document.getElementById("scrollLocation")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
 
   return {

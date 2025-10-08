@@ -1,6 +1,6 @@
-import { isWeatherInfo } from "../../utils/isWeatherInfo";
-import { FavoritesButton } from "../buttons/FavoritesButton";
-import { InfoButton } from "../buttons/InfoButton";
+import { isWeatherInfo } from "@/utils/isWeatherInfo";
+import { FavoritesButton } from "@/components/buttons/FavoritesButton";
+import { InfoButton } from "@/components/buttons/InfoButton";
 import { ErrorCard } from "./ErrorCard";
 
 export const PresentationalInfoCard = ({ data }: { data: unknown }) => {

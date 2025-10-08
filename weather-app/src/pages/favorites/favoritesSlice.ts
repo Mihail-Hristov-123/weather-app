@@ -1,6 +1,8 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
-const initialState: string[] = [];
+const initialState: string[] = JSON.parse(
+  localStorage.getItem("favorites") || "[]"
+);
 
 export const favoritesSlice = createSlice({
   name: "favorites",

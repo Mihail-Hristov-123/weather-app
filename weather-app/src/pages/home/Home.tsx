@@ -1,6 +1,7 @@
 import { PresentationalInfoCard } from "../../components/cards/PresentationalInfoCard";
 import { ErrorCard } from "../../components/cards/ErrorCard";
 import { useWeatherSearch } from "./useWeatherSearch";
+import searchSVG from "../../assets/search.svg";
 
 export const Home = () => {
   const {
@@ -14,11 +15,16 @@ export const Home = () => {
   } = useWeatherSearch();
 
   return (
-    <div className=" flex flex-col items-center gap-12">
+    <div className=" flex flex-col items-center gap-12 dark:bg-gray-800 h-full min-h-[95vh]">
       <div className=" flex flex-col items-center gap-24">
-        <h1 className=" text-center text-4xl">Welcome to Weather App</h1>
-        <form onSubmit={handleSubmit}>
-          <label className=" flex flex-col text-xl">
+        <h1 className=" text-center text-6xl font-bold pt-20 dark:text-white">
+          Welcome to Weather App
+        </h1>
+        <form
+          onSubmit={handleSubmit}
+          className=" flex flex-col items-center gap-12 "
+        >
+          <label className=" flex flex-col gap-y-6 text-3xl relative dark:text-white">
             Check out any city's current weather
             <input
               list="recent"
@@ -26,17 +32,25 @@ export const Home = () => {
               minLength={2}
               required
               onChange={handleSearchChange}
-              className="border-2  rounded-4xl px-1 py-0.5"
+              className="border-3 relative rounded-4xl p-2 pl-10"
               type="search"
             />
+            <button
+              type="submit"
+              className=" w-8 absolute bottom-3 left-2 "
+              disabled={isLoading}
+            >
+              <img
+                src={searchSVG}
+                className=" rotate-[360deg]"
+                alt=" search icon"
+              />
+            </button>
             <datalist id="recent">
               {searchHistory.length &&
                 searchHistory.map((value) => <option value={value} />)}
             </datalist>
           </label>
-          <button type="submit" disabled={isLoading}>
-            {isLoading ? "Loading..." : "Search"}
-          </button>
         </form>
       </div>
       {isError && <ErrorCard />}

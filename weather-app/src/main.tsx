@@ -8,7 +8,7 @@ import { Favorites } from "./pages/favorites/Favorites.tsx";
 import { NotFound } from "./pages/NotFound.tsx";
 import { Routes as RoutesEnum } from "./routes.ts";
 import { ThemeProvider } from "./contexts/ThemeContext.tsx";
-import { ThemeSwitcher } from "./components/ThemeSwitcher.tsx";
+import { ThemeSwitcher } from "./components/buttons/ThemeSwitcher.tsx";
 import { Provider } from "react-redux";
 import { store } from "./store.ts";
 import { Details } from "./pages/forecasts/details/Details.tsx";

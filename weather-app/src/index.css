@@ -9,5 +9,9 @@ a.active {
   border-bottom: 3px solid green;
   transition: border-bottom-width 0.4s ease;
 }
+.dark a.active {
+  color: rgba(30, 41, 57);
+  border-bottom: 3px solid rgba(30, 41, 57);
+}
 
 @custom-variant dark (&:where(.dark, .dark *));

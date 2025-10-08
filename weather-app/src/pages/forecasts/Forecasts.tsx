@@ -23,10 +23,12 @@ export const Forecasts = () => {
   const itemsPerPageChoices = [10, 20, 30, 50];
 
   return (
-    <div className=" flex flex-col items-center">
-      <h1>Forecasts for popular locations</h1>
-      <label>
-        Show{" "}
+    <div className=" flex flex-col items-center px-3 dark:bg-gray-800 relative">
+      <h1 className="text-center text-6xl font-bold pt-20 pb-16 dark:text-white">
+        Forecasts for popular locations
+      </h1>
+      <label className=" dark:text-white text-3xl self-start mb-6  relative left-8">
+        Show:{" "}
         <select
           name="shownItemsCount"
           onChange={(e) => dispatch(setItemsPerPage(Number(e.target.value)))}
@@ -48,18 +50,15 @@ export const Forecasts = () => {
         <button
           disabled={decrementButtonDisabled}
           onClick={() => dispatch(decrementPage())}
-          className={`px-4 py-2 border rounded 
-    ${
-      decrementButtonDisabled
-        ? "opacity-50 cursor-not-allowed"
-        : "hover:bg-gray-200"
-    }`}
+          className={`px-4 py-2 border rounded dark:bg-white
+    ${decrementButtonDisabled && "opacity-50 cursor-not-allowed"}`}
         >
           Back
         </button>
 
         <select
           name="page"
+          className=" dark:text-white text-xl"
           onChange={(e) => dispatch(setPage(Number(e.target.value)))}
         >
           {[...Array(totalPages)].map((_, i) => {
@@ -74,7 +73,7 @@ export const Forecasts = () => {
         <button
           disabled={incrementButtonDisabled}
           onClick={() => dispatch(incrementPage())}
-          className={`px-4 py-2 border rounded 
+          className={`px-4 py-2 border rounded dark:bg-white
     ${
       incrementButtonDisabled
         ? "opacity-50 cursor-not-allowed"

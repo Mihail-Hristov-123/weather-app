@@ -15,11 +15,9 @@ export const Home = () => {
   } = useWeatherSearch();
 
   return (
-    <div className=" flex flex-col items-center gap-12 dark:bg-gray-800 h-full min-h-[95vh]">
+    <div className=" flex flex-col items-center gap-12 wrapper">
       <div className=" flex flex-col items-center gap-24">
-        <h1 className=" text-center text-6xl font-bold pt-20 dark:text-white">
-          Welcome to Weather App
-        </h1>
+        <h1 className=" main-title pt-20 ">Welcome to Weather App</h1>
         <form
           onSubmit={handleSubmit}
           className=" flex flex-col items-center gap-12 "

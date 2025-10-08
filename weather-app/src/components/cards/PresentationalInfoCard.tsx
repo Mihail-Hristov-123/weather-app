@@ -7,7 +7,7 @@ export const PresentationalInfoCard = ({ data }: { data: WeatherInfo }) => {
   const { name: cityName } = location;
 
   return (
-    <section className="bg-gray-400 min-w-[28vw] p-2 flex flex-col items-center rounded-2xl relative transition-all duration-300 transform hover:-translate-y-2 hover:-translate-x-2 ">
+    <section className="bg-gray-400 min-w-[18vw] p-2 px-4 flex flex-col items-center rounded-2xl relative transition-all duration-300 transform hover:-translate-y-2 hover:-translate-x-2 ">
       <menu className=" flex justify-between w-full gap-x-4 items-center p-6">
         <FavoritesButton cityName={cityName} />
         <h3 className=" text-3xl font-extrabold">
@@ -27,7 +27,9 @@ export const PresentationalInfoCard = ({ data }: { data: WeatherInfo }) => {
             src={current.condition.icon}
             alt={current.condition.text + "icon"}
           />
-          <p className=" relative bottom-5">{current.condition.text}</p>
+          <p className=" relative bottom-3 font-bold text-white text-2xl">
+            {current.condition.text}
+          </p>
         </div>
       </div>
     </section>

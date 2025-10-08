@@ -23,8 +23,8 @@ export const Details = () => {
 
   const { current } = data;
   return (
-    <div className="flex flex-col items-center p-4">
-      <h1 className="text-2xl font-semibold mb-2">
+    <div className="flex flex-col items-center p-4 wrapper dark:text-white ">
+      <h1 className="main-title">
         Detailed <span className="capitalize">{cityName}</span> weather forecast
       </h1>
 

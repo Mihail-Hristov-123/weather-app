@@ -23,10 +23,8 @@ export const Forecasts = () => {
   const itemsPerPageChoices = [10, 20, 30, 50];
 
   return (
-    <div className=" flex flex-col items-center px-3 dark:bg-gray-800 relative">
-      <h1 className="text-center text-6xl font-bold pt-20 pb-16 dark:text-white">
-        Forecasts for popular locations
-      </h1>
+    <div className=" flex flex-col items-center px-3 wrapper relative">
+      <h1 className="main-title">Forecasts for popular locations</h1>
       <label className=" dark:text-white text-3xl self-start mb-6  relative left-8">
         Show:{" "}
         <select
@@ -41,12 +39,12 @@ export const Forecasts = () => {
         </select>
       </label>
 
-      <section className=" flex flex-wrap gap-x-6 gap-y-8 justify-around">
+      <section className=" flex flex-wrap gap-x-10 gap-y-8 justify-center content-center">
         {currentCities.map((city) => (
           <InfoCard cityName={city} />
         ))}
       </section>
-      <menu className=" flex justify-around my-12 w-1/8">
+      <menu className=" flex justify-around mt-12 mb-8 w-1/8">
         <button
           disabled={decrementButtonDisabled}
           onClick={() => dispatch(decrementPage())}

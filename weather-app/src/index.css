@@ -14,4 +14,22 @@ a.active {
   border-bottom: 3px solid rgba(30, 41, 57);
 }
 
+.main-title {
+  text-align: center;
+  font-size: 3.75rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2rem;
+  font-weight: 600;
+}
+.dark .main-title {
+  color: white;
+}
+
+.wrapper {
+  min-height: 95vh;
+}
+.dark .wrapper {
+  background-color: rgba(30, 41, 57);
+}
+
 @custom-variant dark (&:where(.dark, .dark *));

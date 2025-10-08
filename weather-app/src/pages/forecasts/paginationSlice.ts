@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import { cities } from "../../utils/popularLocations";
+import { cities } from "../../utils/cities";
 
 interface PaginationInfo {
   currentPage: number;

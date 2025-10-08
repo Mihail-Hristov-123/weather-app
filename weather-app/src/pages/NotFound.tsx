@@ -1,3 +1,5 @@
 export const NotFound = () => {
-  return <h1>The page you are looking for doesn't exist</h1>;
+  return (
+    <h1 className="main-title">The page you are looking for doesn't exist</h1>
+  );
 };

@@ -1,8 +1,12 @@
-import type { WeatherInfo } from "../../types";
+import { isWeatherInfo } from "../../utils/isWeatherInfo";
 import { FavoritesButton } from "../buttons/FavoritesButton";
 import { InfoButton } from "../buttons/InfoButton";
+import { ErrorCard } from "./ErrorCard";
 
-export const PresentationalInfoCard = ({ data }: { data: WeatherInfo }) => {
+export const PresentationalInfoCard = ({ data }: { data: unknown }) => {
+  if (!isWeatherInfo(data)) {
+    return <ErrorCard />;
+  }
   const { location, current } = data;
   const { name: cityName } = location;
 

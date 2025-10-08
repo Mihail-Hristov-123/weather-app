@@ -1,12 +1,7 @@
 import { InfoCard } from "../../components/cards/InfoCard";
 import { useAppDispatch } from "../../typedHooks";
 
-import {
-  decrementPage,
-  incrementPage,
-  setItemsPerPage,
-  setPage,
-} from "./paginationSlice";
+import { decrementPage, incrementPage, setPage } from "./paginationSlice";
 import { usePagination } from "./usePagination";
 
 export const Forecasts = () => {
@@ -18,6 +13,7 @@ export const Forecasts = () => {
     totalPages,
     currentPage,
     itemsPerPage,
+    changeItemsPerPage,
   } = usePagination();
 
   const itemsPerPageChoices = [10, 20, 30, 50];
@@ -25,12 +21,10 @@ export const Forecasts = () => {
   return (
     <div className=" flex flex-col items-center px-3 wrapper relative">
       <h1 className="main-title">Forecasts for popular locations</h1>
+      <div id="scrollLocation" />
       <label className=" dark:text-white text-3xl self-start mb-6  relative left-8">
         Show:{" "}
-        <select
-          name="shownItemsCount"
-          onChange={(e) => dispatch(setItemsPerPage(Number(e.target.value)))}
-        >
+        <select name="shownItemsCount" onChange={changeItemsPerPage}>
           {itemsPerPageChoices.map((count) => (
             <option value={count} selected={itemsPerPage === count}>
               {count}

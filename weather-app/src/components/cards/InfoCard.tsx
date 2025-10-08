@@ -1,15 +1,16 @@
 import { useGetCurrentWeatherByCityQuery } from "../../services/weatherApi";
-import { isWeatherInfo } from "../../utils/isWeatherInfo";
+
 import { ErrorCard } from "./ErrorCard";
+import { LoadingCard } from "./LoadingCard";
 import { PresentationalInfoCard } from "./PresentationalInfoCard";
 
 export const InfoCard = ({ cityName }: { cityName: string }) => {
   const { data, isLoading, error } = useGetCurrentWeatherByCityQuery(cityName);
 
-  if (error || !isWeatherInfo(data)) {
+  if (error) {
     return <ErrorCard />;
   }
-  if (isLoading) return <h3>Loading...</h3>;
+  if (isLoading) return <LoadingCard />;
 
   return <PresentationalInfoCard data={data} />;
 };

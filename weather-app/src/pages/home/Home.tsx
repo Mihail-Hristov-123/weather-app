@@ -1,7 +1,7 @@
 import { PresentationalInfoCard } from "@/components/cards/subcards/PresentationalInfoCard";
-import { ErrorCard } from "@/components/cards/subcards/ErrorCard";
 import { useWeatherSearch } from "./useWeatherSearch";
 import searchSVG from "@/assets/search.svg";
+import { FallbackCard } from "@/components/cards/FallbackCard";
 
 export const Home = () => {
   const {
@@ -51,9 +51,8 @@ export const Home = () => {
           </label>
         </form>
       </div>
-      {isError && <ErrorCard />}
-      {isLoading && <p>Loading ...</p>}
-      {data && !isError && <PresentationalInfoCard data={data} />}
+      {(isLoading || isError) && <FallbackCard loading={isLoading} />}
+      {data && <PresentationalInfoCard data={data} />}
     </div>
   );
 };

@@ -2,8 +2,8 @@ import { useParams } from "react-router";
 import { useGetCurrentWeatherByCityQuery } from "@/services/weatherApi";
 import { ErrorCard } from "@/components/cards/subcards/ErrorCard";
 
-import { isWeatherInfo } from "@/utils/isWeatherInfo";
 import { FavoritesButton } from "@/components/buttons/FavoritesButton";
+import { FallbackCard } from "@/components/cards/FallbackCard";
 
 export const Details = () => {
   const { id: cityName } = useParams();
@@ -13,12 +13,8 @@ export const Details = () => {
 
   const { data, isLoading, error } = useGetCurrentWeatherByCityQuery(cityName);
 
-  if (isLoading) {
-    return <h1>Loading...</h1>;
-  }
-
-  if (error || !isWeatherInfo(data)) {
-    return <ErrorCard />;
+  if (isLoading || error) {
+    return <FallbackCard loading={isLoading} />;
   }
 
   const { current } = data;

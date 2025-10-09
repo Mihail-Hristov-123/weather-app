@@ -21,7 +21,7 @@ export const Forecasts = () => {
   return (
     <div className=" flex flex-col items-center px-3 wrapper relative">
       <h1 className="main-title">Forecasts for popular locations</h1>
-      <label className=" dark:text-white text-3xl self-start mb-6  relative left-8">
+      <label className="text-3xl self-start mb-6  relative left-8">
         Show:{" "}
         <select name="shownItemsCount" onChange={changeItemsPerPage}>
           {itemsPerPageChoices.map((count) => (
@@ -49,7 +49,7 @@ export const Forecasts = () => {
 
         <select
           name="page"
-          className=" dark:text-white text-xl"
+          className=" text-xl"
           onChange={(e) => dispatch(setPage(Number(e.target.value)))}
         >
           {[...Array(totalPages)].map((_, i) => {

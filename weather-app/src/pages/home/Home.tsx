@@ -24,7 +24,7 @@ export const Home = () => {
           onSubmit={handleSubmit}
           className=" flex flex-col items-center gap-12 "
         >
-          <label className=" flex flex-col gap-y-6 text-3xl relative dark:text-white">
+          <label className=" flex flex-col gap-y-6 text-3xl relative">
             Check out any city's current weather
             <input
               list={searchValue ? "suggestions" : "recent"}

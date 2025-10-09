@@ -13,9 +13,7 @@ export const Favorites = () => {
         {favoriteLocations.length ? (
           favoriteLocations.map((location) => <InfoCard cityName={location} />)
         ) : (
-          <h2 className=" dark:text-white text-4xl">
-            You haven't pinned any locations yet.
-          </h2>
+          <h2 className="text-4xl">You haven't pinned any locations yet.</h2>
         )}
       </section>
     </div>

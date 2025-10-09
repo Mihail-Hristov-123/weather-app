@@ -8,7 +8,10 @@ export const Details = () => {
   if (isLoading) {
     return (
       <div className=" wrapper">
-        <h1 className=" main-title">Loading detailed {cityName} forecast...</h1>
+        <h1 className=" main-title">
+          Loading detailed <span className="capitalize">{cityName}</span>{" "}
+          forecast...
+        </h1>
       </div>
     );
   }
@@ -20,7 +23,13 @@ export const Details = () => {
 
   return (
     <div className=" wrapper items-center flex flex-col gap-12 ">
-      <h1 className=" main-title">Detailed {cityName} forecast</h1>
+      <h1 className=" main-title">
+        Detailed{" "}
+        <span className=" capitalize">
+          {cityName}, {data.location.country}
+        </span>{" "}
+        forecast
+      </h1>
       <section className=" w-1/2 bg-gray-800 dark:bg-white text-white text-2xl dark:text-black rounded-2xl p-8 justify-items-center gap-2 mb-48 grid grid-cols-2 grid-rows-7">
         <h2 className=" text-center text-4xl col-span-2  row-span-2">
           Current weather conditions
@@ -43,10 +52,8 @@ export const Details = () => {
         <p>Visibility: {current.vis_km} km</p>
         <p>Gusts: {current.gust_kph} km/h</p>
       </section>
-      <h2 className=" dark:text-white text-center text-4xl">
-        Forecast for the next 5 days
-      </h2>
-      <section className=" flex justify-around gap-20 flex-wrap pb-[40vh]  ">
+      <h2 className="text-center text-4xl">Forecast for the next 5 days</h2>
+      <section className="flex justify-around gap-20 flex-wrap pb-[40vh]  ">
         {data.forecast.forecastday.slice(1).map((day) => (
           <WeatherCard data={day} key={day.date} />
         ))}

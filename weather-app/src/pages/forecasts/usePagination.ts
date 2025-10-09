@@ -1,6 +1,6 @@
-import { useEffect, type ChangeEvent, type FormEvent } from "react";
-import { useAppDispatch, useAppSelector } from "../../typedHooks";
-import { cities } from "../../utils/cities";
+import { useEffect, type ChangeEvent } from "react";
+import { useAppDispatch, useAppSelector } from "@/typedHooks";
+import { CITIES } from "@/cities";
 import { setItemsPerPage, setPage } from "./paginationSlice";
 
 export const usePagination = () => {
@@ -14,20 +14,17 @@ export const usePagination = () => {
     dispatch(setPage(1));
   };
 
-  const currentCities = cities.slice(
+  const currentCities = CITIES.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  const totalPages = Math.ceil(cities.length / itemsPerPage);
+  const totalPages = Math.ceil(CITIES.length / itemsPerPage);
   const decrementButtonDisabled = currentPage === 1;
   const incrementButtonDisabled = currentPage === totalPages;
 
   useEffect(() => {
-    document.getElementById("scrollLocation")?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
 
   return {

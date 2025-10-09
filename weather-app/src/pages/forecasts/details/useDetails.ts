@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import { useGetForecastByCityQuery } from "../../../services/weatherApi";
+import { useGetForecastByCityQuery } from "@/services/weatherApi";
 
 export const useDetails = () => {
   const { id: cityName } = useParams();

@@ -1,4 +1,4 @@
-import LoadingSVG from "../../assets/loader.svg";
+import LoadingSVG from "@/assets/loader.svg";
 
 export const LoadingCard = () => {
   return (

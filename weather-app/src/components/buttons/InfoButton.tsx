@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
-import infoSVG from "../../assets/info.svg";
-import { Routes } from "../../routes";
+import infoSVG from "@/assets/info.svg";
+import { Routes } from "@/routes";
 
 export const InfoButton = ({ cityName }: { cityName: string }) => {
   const navigate = useNavigate();

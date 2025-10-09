@@ -1,16 +1,11 @@
-import { useGetCurrentWeatherByCityQuery } from "../../services/weatherApi";
-
-import { ErrorCard } from "./ErrorCard";
-import { LoadingCard } from "./LoadingCard";
-import { PresentationalInfoCard } from "./PresentationalInfoCard";
+import { useGetCurrentWeatherByCityQuery } from "@/services/weatherApi";
+import { PresentationalInfoCard } from "./subcards/PresentationalInfoCard";
+import { FallbackCard } from "./FallbackCard";
 
 export const InfoCard = ({ cityName }: { cityName: string }) => {
   const { data, isLoading, error } = useGetCurrentWeatherByCityQuery(cityName);
 
-  if (error) {
-    return <ErrorCard />;
-  }
-  if (isLoading) return <LoadingCard />;
+  if (error || isLoading) return <FallbackCard loading={isLoading} />;
 
-  return <PresentationalInfoCard data={data} />;
+  return <PresentationalInfoCard data={data!} />;
 };

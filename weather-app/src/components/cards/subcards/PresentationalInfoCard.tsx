@@ -1,6 +1,6 @@
-import { FavoritesButton } from "../buttons/FavoritesButton";
-import { InfoButton } from "../buttons/InfoButton";
-import { FigureWithCaption } from "../FigureWithCaption";
+import { FavoritesButton } from "@/components/buttons/FavoritesButton";
+import { InfoButton } from "@/components/buttons/InfoButton";
+import { FigureWithCaption } from "@/components/FigureWithCaption";
 
 export const PresentationalInfoCard = ({
   data,

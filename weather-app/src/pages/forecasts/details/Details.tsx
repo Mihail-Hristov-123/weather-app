@@ -1,6 +1,6 @@
-import { GenericError } from "@/components/GenericError";
 import { WeatherCard } from "@/components/cards/WeatherCard";
 import { useDetails } from "./useDetails";
+import { NotFound } from "@/pages/NotFound";
 
 export const Details = () => {
   const { data, error, isLoading, cityName } = useDetails();
@@ -13,7 +13,7 @@ export const Details = () => {
     );
   }
   if (error || !data) {
-    return <GenericError />;
+    return <NotFound />;
   }
 
   const { current } = data;

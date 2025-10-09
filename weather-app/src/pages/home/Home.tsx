@@ -2,6 +2,7 @@ import { PresentationalInfoCard } from "@/components/cards/subcards/Presentation
 import { useWeatherSearch } from "./useWeatherSearch";
 import searchSVG from "@/assets/search.svg";
 import { FallbackCard } from "@/components/cards/FallbackCard";
+import { Datalist } from "@/components/Datalist";
 
 export const Home = () => {
   const {
@@ -9,8 +10,9 @@ export const Home = () => {
     handleSubmit,
     isError,
     isLoading,
+    suggestions,
+    history,
     data,
-    searchHistory,
     handleSearchChange,
   } = useWeatherSearch();
 
@@ -25,7 +27,7 @@ export const Home = () => {
           <label className=" flex flex-col gap-y-6 text-3xl relative dark:text-white">
             Check out any city's current weather
             <input
-              list="recent"
+              list={searchValue ? "suggestions" : "recent"}
               value={searchValue}
               minLength={2}
               required
@@ -38,16 +40,17 @@ export const Home = () => {
               className=" w-8 absolute bottom-3 left-2 "
               disabled={isLoading}
             >
-              <img
-                src={searchSVG}
-                className=" rotate-[360deg]"
-                alt=" search icon"
-              />
+              <img src={searchSVG} alt=" search icon" />
             </button>
-            <datalist id="recent">
-              {searchHistory.length &&
-                searchHistory.map((value) => <option value={value} />)}
-            </datalist>
+            <Datalist id="recent" options={history} />
+            {suggestions && (
+              <Datalist
+                options={suggestions}
+                id="suggestions"
+                getOptionValue={(s) => s.name}
+                getOptionLabel={(s) => `${s.name}, ${s.country}`}
+              />
+            )}
           </label>
         </form>
       </div>

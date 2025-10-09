@@ -10,7 +10,14 @@ export const weatherApi = createApi({
       query: (city) => `current.json?key=${WEATHER_API_KEY}&q=${city}`,
     }),
     getForecastByCity: builder.query<ForecastResponse, string>({
-      query: (city) => `/forecast.json?key=${WEATHER_API_KEY}&q=${city}&days=6`,
+      query: (city) => `forecast.json?key=${WEATHER_API_KEY}&q=${city}&days=6`,
+    }),
+    getAutocompleteRecommendations: builder.query<
+      AutocompleteSuggestion[],
+      string
+    >({
+      query: (currentSearch: string) =>
+        `search.json?key=${WEATHER_API_KEY}&q=${currentSearch}`,
     }),
   }),
 });
@@ -18,4 +25,5 @@ export const {
   useGetCurrentWeatherByCityQuery,
   useLazyGetCurrentWeatherByCityQuery,
   useGetForecastByCityQuery,
+  useGetAutocompleteRecommendationsQuery,
 } = weatherApi;

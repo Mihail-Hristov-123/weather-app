@@ -1,12 +1,23 @@
 import { NavLink } from "react-router";
 import { Routes } from "@/routes";
 
+interface NavItem {
+  route: Routes;
+  label: string;
+}
+
+const navItems: NavItem[] = [
+  { route: Routes.HOME, label: "Home" },
+  { route: Routes.FORECASTS, label: "All forecasts" },
+  { route: Routes.FAVORITES, label: "Favorites" },
+];
+
 export const Navbar = () => {
   return (
     <nav className=" flex justify-around py-3.5 font-bold  text-black dark:bg-gray-600 dark:text-white">
-      <NavLink to={Routes.HOME}>Home</NavLink>
-      <NavLink to={Routes.FORECASTS}>All forecasts</NavLink>
-      <NavLink to={Routes.FAVORITES}>Favorites</NavLink>
+      {navItems.map(({ route, label }) => (
+        <NavLink to={route}>{label}</NavLink>
+      ))}
     </nav>
   );
 };

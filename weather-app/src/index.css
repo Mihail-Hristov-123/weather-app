@@ -29,6 +29,7 @@ a.active {
 
 .wrapper {
   min-height: 95vh;
+  padding-bottom: 3rem;
 }
 
 .dark .wrapper {

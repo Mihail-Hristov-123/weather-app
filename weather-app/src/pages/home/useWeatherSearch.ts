@@ -6,15 +6,13 @@ import {
 import { useAppDispatch, useAppSelector } from "@/typedHooks";
 import {
   addToHistory,
-  reset,
+  resetSearch,
   setAutocompleteSuggestions,
-  update,
+  updateSearch,
 } from "./searchSlice";
 
 export const useWeatherSearch = () => {
-  const { value: searchValue, history } = useAppSelector(
-    (state) => state.search
-  );
+  const { searchValue, history } = useAppSelector((state) => state.search);
 
   const dispatch = useAppDispatch();
 
@@ -24,13 +22,13 @@ export const useWeatherSearch = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     const query = searchValue.trim();
-    dispatch(reset());
+    dispatch(resetSearch());
     dispatch(addToHistory(searchValue));
     await trigger(query);
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) =>
-    dispatch(update(e.target.value));
+    dispatch(updateSearch(e.target.value));
 
   const { data: suggestions, isSuccess } =
     useGetAutocompleteRecommendationsQuery(searchValue, {

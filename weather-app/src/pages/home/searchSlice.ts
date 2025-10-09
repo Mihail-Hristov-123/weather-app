@@ -1,13 +1,13 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 type SearchSliceType = {
-  value: string;
+  searchValue: string;
   suggestions: AutocompleteSuggestion[];
   history: string[];
 };
 
 const initialState: SearchSliceType = {
-  value: "",
+  searchValue: "",
   suggestions: [],
   history: [],
 };
@@ -18,13 +18,14 @@ const searchSlice = createSlice({
   reducers: {
     addToHistory: (state, action: PayloadAction<string>) => {
       if (!state.history.includes(action.payload))
-        state.history.push(action.payload);
+        state.history.unshift(action.payload);
+      if (state.history.length > 10) state.history.pop();
     },
-    update: (state, action: PayloadAction<string>) => {
-      state.value = action.payload;
+    updateSearch: (state, action: PayloadAction<string>) => {
+      state.searchValue = action.payload;
     },
-    reset: (state) => {
-      state.value = "";
+    resetSearch: (state) => {
+      state.searchValue = "";
       state.suggestions.length = 0;
     },
     setAutocompleteSuggestions: (
@@ -36,7 +37,11 @@ const searchSlice = createSlice({
   },
 });
 
-export const { update, reset, setAutocompleteSuggestions, addToHistory } =
-  searchSlice.actions;
+export const {
+  updateSearch,
+  resetSearch,
+  setAutocompleteSuggestions,
+  addToHistory,
+} = searchSlice.actions;
 
 export default searchSlice.reducer;

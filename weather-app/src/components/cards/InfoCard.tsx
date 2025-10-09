@@ -5,7 +5,7 @@ import { FallbackCard } from "./FallbackCard";
 export const InfoCard = ({ cityName }: { cityName: string }) => {
   const { data, isLoading, error } = useGetCurrentWeatherByCityQuery(cityName);
 
-  if (error || isLoading) return <FallbackCard loading={isLoading} />;
+  if (error || isLoading || !data) return <FallbackCard loading={isLoading} />;
 
-  return <PresentationalInfoCard data={data!} />;
+  return <PresentationalInfoCard data={data} />;
 };

@@ -12,7 +12,7 @@ export const ThemeSwitcher = () => {
     >
       <img
         src={darkModeOn ? darkModeSVG : lightModeSVG}
-        alt=" theme switch icon"
+        alt="theme switch icon"
       />
     </button>
   );

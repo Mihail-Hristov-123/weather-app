@@ -1,24 +1,36 @@
 import { WeatherCard } from "../../../components/cards/WeatherCard";
 import { useDetails } from "./useDetails";
 
+import { Error } from "../../../components/Error";
+
 export const Details = () => {
   const { data, error, isLoading, cityName } = useDetails();
-  console.log(data);
-  if (!data) {
-    return;
+
+  if (isLoading) {
+    return (
+      <div className=" wrapper">
+        <h1 className=" main-title">Loading detailed {cityName} forecast...</h1>
+      </div>
+    );
   }
+  if (error || !data) {
+    return <Error />;
+  }
+
   const { current } = data;
 
   return (
-    <div className=" wrapper flex flex-col gap-12 pb-40">
-      <section>
-        <h1 className=" main-title">Detailed {cityName} forecast</h1>
-        <h2 className=" text-center text-4xl">Current weather conditions</h2>
+    <div className=" wrapper items-center flex flex-col gap-12 ">
+      <h1 className=" main-title">Detailed {cityName} forecast</h1>
+      <section className=" w-1/2 bg-gray-800 dark:bg-white text-white text-2xl dark:text-black rounded-2xl p-8 justify-items-center gap-2 mb-48 grid grid-cols-2 grid-rows-7">
+        <h2 className=" text-center text-4xl col-span-2  row-span-2">
+          Current weather conditions
+        </h2>
         <p>
           Temperature: {current.temp_c} <sup>°C</sup>
         </p>
         <p>
-          Feels like: {current.feelslike_c} <sup>°C</sup>
+          Feels like {current.feelslike_c} <sup>°C</sup>
         </p>
         <p>Humidity: {current.humidity}%</p>
         <p>Condition: {current.condition.text}</p>
@@ -35,7 +47,7 @@ export const Details = () => {
       <h2 className=" dark:text-white text-center text-4xl">
         Forecast for the next 5 days
       </h2>
-      <section className=" flex justify-around  flex-wrap px-20 ">
+      <section className=" flex justify-around gap-20 flex-wrap pb-[40vh]  ">
         {data.forecast.forecastday.slice(1).map((day) => (
           <WeatherCard data={day} key={day.date} />
         ))}

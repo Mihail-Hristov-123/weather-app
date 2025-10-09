@@ -42,7 +42,7 @@ export const Forecasts = () => {
         <button
           disabled={decrementButtonDisabled}
           onClick={() => dispatch(decrementPage())}
-          className={`px-4 py-2 border rounded dark:bg-white
+          className={`px-4 py-2 border rounded dark:bg-white text-black
     ${decrementButtonDisabled && "opacity-50 cursor-not-allowed"}`}
         >
           Back
@@ -65,7 +65,7 @@ export const Forecasts = () => {
         <button
           disabled={incrementButtonDisabled}
           onClick={() => dispatch(incrementPage())}
-          className={`px-4 py-2 border rounded dark:bg-white
+          className={`px-4 py-2 border rounded dark:bg-white text-black
     ${
       incrementButtonDisabled
         ? "opacity-50 cursor-not-allowed"

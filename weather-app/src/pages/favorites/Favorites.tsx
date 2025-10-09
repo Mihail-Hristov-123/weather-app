@@ -9,7 +9,7 @@ export const Favorites = () => {
       <h1 className=" main-title">
         Monitor the weather in your favorite locations
       </h1>
-      <section className=" flex flex-wrap gap-6 justify-around ">
+      <section className=" flex flex-wrap gap-6 justify-around px-6 pb-12 ">
         {favoriteLocations.length ? (
           favoriteLocations.map((location) => <InfoCard cityName={location} />)
         ) : (

@@ -31,5 +31,9 @@ a.active {
 .dark .wrapper {
   background-color: rgba(30, 41, 57);
 }
+#root,
+#root * {
+  transition: all 0.3s ease;
+}
 
 @custom-variant dark (&:where(.dark, .dark *));

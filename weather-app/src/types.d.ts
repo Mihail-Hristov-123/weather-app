@@ -122,3 +122,13 @@ interface ForecastResponse extends CurrentWeatherResponse {
     forecastday: ForecastDay[];
   };
 }
+
+interface AutocompleteSuggestion {
+  country: string;
+  id: number;
+  lat: number;
+  lon: number;
+  name: string;
+  region: string;
+  url: string;
+}

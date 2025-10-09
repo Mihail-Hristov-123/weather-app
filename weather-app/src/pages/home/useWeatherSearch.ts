@@ -1,10 +1,18 @@
-import type { FormEvent } from "react";
-import { useLazyGetCurrentWeatherByCityQuery } from "@/services/weatherApi";
+import { useEffect, type FormEvent } from "react";
+import {
+  useGetAutocompleteRecommendationsQuery,
+  useLazyGetCurrentWeatherByCityQuery,
+} from "@/services/weatherApi";
 import { useAppDispatch, useAppSelector } from "@/typedHooks";
-import { addToHistory, reset, update } from "./searchSlice";
+import {
+  addToHistory,
+  reset,
+  setAutocompleteSuggestions,
+  update,
+} from "./searchSlice";
 
 export const useWeatherSearch = () => {
-  const { value: searchValue, history: searchHistory } = useAppSelector(
+  const { value: searchValue, history } = useAppSelector(
     (state) => state.search
   );
 
@@ -17,21 +25,33 @@ export const useWeatherSearch = () => {
     e.preventDefault();
     const query = searchValue.trim();
     dispatch(reset());
-    dispatch(addToHistory(query));
+    dispatch(addToHistory(searchValue));
     await trigger(query);
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     dispatch(update(e.target.value));
 
+  const { data: suggestions, isSuccess } =
+    useGetAutocompleteRecommendationsQuery(searchValue, {
+      skip: searchValue.length === 0,
+    });
+
+  useEffect(() => {
+    if (isSuccess && suggestions) {
+      dispatch(setAutocompleteSuggestions(suggestions));
+    }
+  }, [suggestions, isSuccess, dispatch]);
+
   return {
     searchValue,
-    searchHistory,
     handleSubmit,
     dispatch,
     isLoading,
+    suggestions,
     isError,
     data,
     handleSearchChange,
+    history,
   };
 };

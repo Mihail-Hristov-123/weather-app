@@ -9,8 +9,9 @@ export const Home = () => {
     handleSubmit,
     isError,
     isLoading,
+    suggestions,
+    history,
     data,
-    searchHistory,
     handleSearchChange,
   } = useWeatherSearch();
 
@@ -25,7 +26,7 @@ export const Home = () => {
           <label className=" flex flex-col gap-y-6 text-3xl relative dark:text-white">
             Check out any city's current weather
             <input
-              list="recent"
+              list={searchValue.length ? "suggestions" : "recent"}
               value={searchValue}
               minLength={2}
               required
@@ -45,8 +46,17 @@ export const Home = () => {
               />
             </button>
             <datalist id="recent">
-              {searchHistory.length &&
-                searchHistory.map((value) => <option value={value} />)}
+              {history.map((search) => (
+                <option value={search}>{search}</option>
+              ))}
+            </datalist>
+            <datalist id="suggestions">
+              {suggestions?.length &&
+                suggestions.map((suggestion) => (
+                  <option
+                    value={suggestion.name}
+                  >{`${suggestion.name}, ${suggestion.country}`}</option>
+                ))}
             </datalist>
           </label>
         </form>

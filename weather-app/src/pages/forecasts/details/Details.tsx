@@ -1,54 +1,39 @@
-import { useParams } from "react-router";
-import { useGetCurrentWeatherByCityQuery } from "../../../services/weatherApi";
-import { ErrorCard } from "../../../components/cards/ErrorCard";
-
-import { isWeatherInfo } from "../../../utils/isWeatherInfo";
-import { FavoritesButton } from "../../../components/buttons/FavoritesButton";
+import { useDetails } from "./useDetails";
 
 export const Details = () => {
-  const { id: cityName } = useParams();
-  if (!cityName) {
+  const { data, error, isLoading, cityName } = useDetails();
+  console.log(data);
+  if (!data) {
     return;
   }
-
-  const { data, isLoading, error } = useGetCurrentWeatherByCityQuery(cityName);
-
-  if (isLoading) {
-    return <h1>Loading...</h1>;
-  }
-
-  if (error || !isWeatherInfo(data)) {
-    return <ErrorCard />;
-  }
-
   const { current } = data;
+
   return (
-    <div className="flex flex-col items-center p-4 wrapper dark:text-white ">
-      <h1 className="main-title">
-        Detailed <span className="capitalize">{cityName}</span> weather forecast
-      </h1>
-
-      <img
-        src={current.condition.icon}
-        alt={`${current.condition.text} icon`}
-        className="w-16 h-16"
-      />
-
-      <p className="text-lg mt-2">{current.condition.text}</p>
-
-      <div className="mt-4 text-center">
+    <div className=" wrapper">
+      <section>
+        <h1 className=" main-title">Detailed {cityName} forecast</h1>
+        <h2 className=" text-center text-4xl">Current weather conditions</h2>
         <p>
-          Temperature: {current.temp_c}°C / {current.temp_f}°F
+          Temperature: {current.temp_c} <sup>°C</sup>
         </p>
-        <p>Feels like: {current.feelslike_c}°C</p>
+        <p>
+          Feels like: {current.feelslike_c} <sup>°C</sup>
+        </p>
         <p>Humidity: {current.humidity}%</p>
+        <p>Condition: {current.condition.text}</p>
         <p>
-          Wind: {current.wind_kph} kph ({current.wind_dir})
+          Wind: {current.wind_kph} km/h ({current.wind_dir})
         </p>
+        <p>Pressure: {current.pressure_mb} mb</p>
+        <p>Precipitation: {current.precip_mm} mm</p>
+        <p>Cloud cover: {current.cloud}%</p>
         <p>UV Index: {current.uv}</p>
         <p>Visibility: {current.vis_km} km</p>
-      </div>
-      <FavoritesButton cityName={cityName} type="text" />
+        <p>Gusts: {current.gust_kph} km/h</p>
+        <h2 className=" dark:text-white text-center text-4xl">
+          Forecast for the next 5 days
+        </h2>
+      </section>
     </div>
   );
 };

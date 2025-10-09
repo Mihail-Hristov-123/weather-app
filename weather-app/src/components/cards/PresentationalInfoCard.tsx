@@ -1,12 +1,11 @@
-import { isWeatherInfo } from "../../utils/isWeatherInfo";
 import { FavoritesButton } from "../buttons/FavoritesButton";
 import { InfoButton } from "../buttons/InfoButton";
-import { ErrorCard } from "./ErrorCard";
 
-export const PresentationalInfoCard = ({ data }: { data: unknown }) => {
-  if (!isWeatherInfo(data)) {
-    return <ErrorCard />;
-  }
+export const PresentationalInfoCard = ({
+  data,
+}: {
+  data: CurrentWeatherResponse;
+}) => {
   const { location, current } = data;
   const { name: cityName } = location;
 
@@ -21,7 +20,7 @@ export const PresentationalInfoCard = ({ data }: { data: unknown }) => {
       </menu>
 
       <div className=" flex items-center justify-center gap-8 w-full">
-        <div className=" flex flex-col items-center gap-y-4 bg-white p-4 rounded-2xl">
+        <div className=" flex flex-col items-center gap-y-4 bg-white p-4 rounded-2xl text-black">
           <span className=" text-6xl"> {current.temp_c} °C</span>
           <span>Feels like: {current.feelslike_c} °C</span>
         </div>

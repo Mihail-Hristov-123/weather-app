@@ -1,5 +1,5 @@
-import { Error } from "@/components/Error";
-import { WeatherCard } from "../../../components/cards/WeatherCard";
+import { GenericError } from "@/components/GenericError";
+import { WeatherCard } from "@/components/cards/WeatherCard";
 import { useDetails } from "./useDetails";
 
 export const Details = () => {
@@ -13,7 +13,7 @@ export const Details = () => {
     );
   }
   if (error || !data) {
-    return <Error />;
+    return <GenericError />;
   }
 
   const { current } = data;

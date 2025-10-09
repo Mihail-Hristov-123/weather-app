@@ -7,7 +7,7 @@ import { Forecasts } from "./pages/forecasts/Forecasts.tsx";
 import { Favorites } from "./pages/favorites/Favorites.tsx";
 import { NotFound } from "./pages/NotFound.tsx";
 import { Routes as RoutesEnum } from "./routes.ts";
-import { ThemeProvider } from "./contexts/ThemeContext.tsx";
+import { ThemeProvider } from "./contexts/theme/ThemeContext.tsx";
 import { ThemeSwitcher } from "./components/buttons/ThemeSwitcher.tsx";
 import { Provider } from "react-redux";
 import { store } from "./store.ts";

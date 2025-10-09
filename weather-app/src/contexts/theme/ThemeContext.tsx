@@ -5,7 +5,9 @@ type ThemeContextType = {
   toggleDarkMode: () => void;
 };
 
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+export const ThemeContext = createContext<ThemeContextType | undefined>(
+  undefined
+);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [darkModeOn, setDarkModeOn] = useState(() => {
@@ -31,12 +33,4 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
       {children}
     </ThemeContext.Provider>
   );
-};
-
-export const useTheme = () => {
-  const themeContext = useContext(ThemeContext);
-  if (!themeContext) {
-    throw new Error("Theme context must be wrapped in its provider to be used");
-  }
-  return themeContext;
 };

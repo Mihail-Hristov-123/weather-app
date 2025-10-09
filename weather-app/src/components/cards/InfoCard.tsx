@@ -7,5 +7,5 @@ export const InfoCard = ({ cityName }: { cityName: string }) => {
 
   if (error || isLoading) return <FallbackCard loading={isLoading} />;
 
-  return <PresentationalInfoCard data={data} />;
+  return <PresentationalInfoCard data={data!} />;
 };

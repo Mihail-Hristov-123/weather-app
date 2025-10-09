@@ -10,7 +10,7 @@ export const Details = () => {
   const { current } = data;
 
   return (
-    <div className=" wrapper flex flex-col gap-12 py-10">
+    <div className=" wrapper flex flex-col gap-12 pb-40">
       <section>
         <h1 className=" main-title">Detailed {cityName} forecast</h1>
         <h2 className=" text-center text-4xl">Current weather conditions</h2>
@@ -35,7 +35,7 @@ export const Details = () => {
       <h2 className=" dark:text-white text-center text-4xl">
         Forecast for the next 5 days
       </h2>
-      <section className=" flex justify-around gap-16 flex-wrap px-20">
+      <section className=" flex justify-around  flex-wrap px-20 ">
         {data.forecast.forecastday.slice(1).map((day) => (
           <WeatherCard data={day} key={day.date} />
         ))}

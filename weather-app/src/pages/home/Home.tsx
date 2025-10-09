@@ -29,6 +29,7 @@ export const Home = () => {
             <input
               list={searchValue ? "suggestions" : "recent"}
               value={searchValue}
+              placeholder="Enter a city"
               minLength={2}
               required
               onChange={handleSearchChange}

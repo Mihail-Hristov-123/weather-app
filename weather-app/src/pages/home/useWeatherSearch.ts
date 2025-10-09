@@ -44,7 +44,6 @@ export const useWeatherSearch = () => {
   return {
     searchValue,
     handleSubmit,
-    dispatch,
     isLoading,
     suggestions,
     isError,

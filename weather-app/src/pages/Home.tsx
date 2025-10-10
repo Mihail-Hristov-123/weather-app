@@ -1,5 +1,5 @@
 import { PresentationalInfoCard } from "@/components/cards/subcards/PresentationalInfoCard";
-import { useWeatherSearch } from "./useWeatherSearch";
+import { useWeatherSearch } from "@/hooks/useWeatherSearch";
 import searchSVG from "@/assets/search.svg";
 import { FallbackCard } from "@/components/cards/FallbackCard";
 import { Datalist } from "@/components/Datalist";

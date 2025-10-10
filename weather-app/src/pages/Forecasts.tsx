@@ -1,8 +1,12 @@
 import { InfoCard } from "@/components/cards/InfoCard";
 import { useAppDispatch } from "@/typedHooks";
 
-import { decrementPage, incrementPage, setPage } from "./paginationSlice";
-import { usePagination } from "./usePagination";
+import {
+  decrementPage,
+  incrementPage,
+  setPage,
+} from "../slices/paginationSlice";
+import { usePagination } from "@/hooks/usePagination";
 import { PageChangeButton } from "@/components/buttons/PageChangeButton";
 import { Select } from "@/components/Select";
 import { ITEMS_PER_PAGE_CHOICES } from "@/constants";
@@ -36,7 +40,7 @@ export const Forecasts = () => {
 
       <section className=" flex flex-wrap gap-x-10 gap-y-8 justify-center content-center">
         {currentCities.map((city) => (
-          <InfoCard cityName={city} key={city} />
+          <InfoCard location={city} />
         ))}
       </section>
       <menu className=" flex justify-around mt-12 mb-8 w-1/8">

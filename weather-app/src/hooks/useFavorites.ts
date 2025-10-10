@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/typedHooks";
-import { addFavorite, removeOneFavorite } from "./favoritesSlice";
+import { addFavorite, removeOneFavorite } from "../slices/favoritesSlice";
 
 export const useFavorites = () => {
   const favoriteLocations = useAppSelector((state) => state.favorites);

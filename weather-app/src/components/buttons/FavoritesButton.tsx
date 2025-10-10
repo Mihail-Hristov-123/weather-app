@@ -1,6 +1,6 @@
 import savedSVG from "@/assets/save.svg";
 import unsavedSVG from "@/assets/unsave.svg";
-import { useFavorites } from "@/pages/favorites/useFavorites";
+import { useFavorites } from "@/hooks/useFavorites";
 import { formulateLocationString } from "@/utils/formulateLocationString";
 
 interface FavoritesButtonProps {

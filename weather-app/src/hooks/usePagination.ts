@@ -1,7 +1,7 @@
 import { useEffect, type ChangeEvent } from "react";
 import { useAppDispatch, useAppSelector } from "@/typedHooks";
 
-import { setItemsPerPage, setPage } from "./paginationSlice";
+import { setItemsPerPage, setPage } from "@/slices/paginationSlice";
 import { CITIES } from "@/constants";
 
 export const usePagination = () => {

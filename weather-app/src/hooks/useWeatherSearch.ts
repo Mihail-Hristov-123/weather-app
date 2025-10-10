@@ -9,7 +9,7 @@ import {
   resetSearch,
   setAutocompleteSuggestions,
   updateSearch,
-} from "./searchSlice";
+} from "@/slices/searchSlice";
 
 export const useWeatherSearch = () => {
   const { searchValue, history } = useAppSelector((state) => state.search);

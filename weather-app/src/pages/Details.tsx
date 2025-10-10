@@ -1,5 +1,5 @@
 import { WeatherCard } from "@/components/cards/WeatherCard";
-import { useDetails } from "./useDetails";
+import { useDetails } from "@/hooks/useDetails";
 import { NotFound } from "@/pages/NotFound";
 import { LoadingDetails } from "@/components/LoadingDetails";
 import { FavoritesButton } from "@/components/buttons/FavoritesButton";

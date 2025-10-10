@@ -1,5 +1,5 @@
 import { InfoCard } from "@/components/cards/InfoCard";
-import { useFavorites } from "./useFavorites";
+import { useFavorites } from "../hooks/useFavorites";
 
 export const Favorites = () => {
   const { favoriteLocations } = useFavorites();

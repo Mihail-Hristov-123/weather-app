@@ -12,6 +12,7 @@ import { ThemeSwitcher } from "./components/buttons/ThemeSwitcher.tsx";
 import { Provider } from "react-redux";
 import { store } from "./store.ts";
 import { Details } from "./pages/forecasts/details/Details.tsx";
+import ErrorBoundary from "./components/ErrorBoundary.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <Provider store={store}>
@@ -25,7 +26,14 @@ createRoot(document.getElementById("root")!).render(
           <Route path="/" element={<Navigate to={RoutesEnum.HOME} />} />
           <Route path={RoutesEnum.FORECASTS} element={<Forecasts />} />
           <Route path={RoutesEnum.FAVORITES} element={<Favorites />} />
-          <Route path={`${RoutesEnum.FORECASTS}/:id`} element={<Details />} />
+          <Route
+            path={`${RoutesEnum.FORECASTS}/:id`}
+            element={
+              <ErrorBoundary>
+                <Details />
+              </ErrorBoundary>
+            }
+          />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </ThemeProvider>

@@ -13,7 +13,7 @@ export const WeatherCard = ({ data }: { data: ForecastDay }) => {
   } = data;
 
   return (
-    <article className=" relative w-[12vw]">
+    <article className=" relative w-[12vw] min-w-36">
       <div className="border-4 border-gray-800 w-full p-4 flex group flex-col items-center rounded-2xl dark:border-white transition-all duration-700 ease-in-out transform text-black origin-bottom absolute hover:-translate-y-32 hover:scale-150  bg-white hover:z-10 ">
         <h3>{date}</h3>
         <FigureWithCaption

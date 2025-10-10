@@ -40,6 +40,8 @@
 
 - Responsiveness
 
+- Simulate Error Boundary application in details page
+
 ## How to run
 
 - Make sure to provide a API key in the env file (I will send mine in the task assignment)

@@ -3,6 +3,9 @@ import { useAppDispatch } from "@/typedHooks";
 
 import { decrementPage, incrementPage, setPage } from "./paginationSlice";
 import { usePagination } from "./usePagination";
+import { PageChangeButton } from "@/components/buttons/PageChangeButton";
+import { Select } from "@/components/Select";
+import { ITEMS_PER_PAGE_CHOICES } from "@/constants";
 
 export const Forecasts = () => {
   const dispatch = useAppDispatch();
@@ -16,64 +19,49 @@ export const Forecasts = () => {
     changeItemsPerPage,
   } = usePagination();
 
-  const itemsPerPageChoices = [10, 20, 30, 50];
-
   return (
-    <div className=" flex flex-col items-center px-3 wrapper relative">
+    <main className=" flex flex-col items-center px-3 wrapper relative">
       <h1 className="main-title">Forecasts for popular locations</h1>
-      <label className=" dark:text-white text-3xl self-start mb-6  relative left-8">
+      <label className="text-3xl self-start mb-6  relative left-8">
         Show:{" "}
-        <select name="shownItemsCount" onChange={changeItemsPerPage}>
-          {itemsPerPageChoices.map((count) => (
-            <option value={count} selected={itemsPerPage === count}>
-              {count}
-            </option>
-          ))}
-        </select>
+        <Select
+          name="shownItemsCount"
+          value={itemsPerPage}
+          onChange={changeItemsPerPage}
+          options={ITEMS_PER_PAGE_CHOICES.map((count) => ({
+            value: count,
+          }))}
+        />
       </label>
 
       <section className=" flex flex-wrap gap-x-10 gap-y-8 justify-center content-center">
         {currentCities.map((city) => (
-          <InfoCard cityName={city} />
+          <InfoCard cityName={city} key={city} />
         ))}
       </section>
       <menu className=" flex justify-around mt-12 mb-8 w-1/8">
-        <button
+        <PageChangeButton
+          type="decrement"
           disabled={decrementButtonDisabled}
           onClick={() => dispatch(decrementPage())}
-          className={`px-4 py-2 border rounded dark:bg-white text-black
-    ${decrementButtonDisabled && "opacity-50 cursor-not-allowed"}`}
-        >
-          Back
-        </button>
+        />
 
-        <select
+        <Select
           name="page"
-          className=" dark:text-white text-xl"
+          value={currentPage}
           onChange={(e) => dispatch(setPage(Number(e.target.value)))}
-        >
-          {[...Array(totalPages)].map((_, i) => {
-            const value = i + 1;
-            return (
-              <option selected={currentPage === value} value={value}>
-                {value}
-              </option>
-            );
-          })}
-        </select>
-        <button
+          options={[...Array(totalPages)].map((_, i) => ({
+            value: i + 1,
+          }))}
+          className="text-xl"
+        />
+
+        <PageChangeButton
+          type="increment"
           disabled={incrementButtonDisabled}
           onClick={() => dispatch(incrementPage())}
-          className={`px-4 py-2 border rounded dark:bg-white text-black
-    ${
-      incrementButtonDisabled
-        ? "opacity-50 cursor-not-allowed"
-        : "hover:bg-gray-200"
-    }`}
-        >
-          Next
-        </button>
+        />
       </menu>
-    </div>
+    </main>
   );
 };

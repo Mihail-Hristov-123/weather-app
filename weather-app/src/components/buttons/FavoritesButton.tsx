@@ -15,20 +15,26 @@ export const FavoritesButton = ({
 
   const isFavorite = checkIsFavorite(cityName);
   const handleClick = () => updateFavoriteStatus(cityName);
+
+  const text = isFavorite ? "Remove from favorites" : "Add to favorites";
+
+  const icon = (
+    <img
+      className="w-10"
+      src={isFavorite ? unsavedSVG : savedSVG}
+      alt="floppy disc icon"
+      title={isFavorite ? "Unsave" : "Save"}
+    />
+  );
+
   return (
-    <button onClick={handleClick} className=" cursor-pointer">
-      {type === "icon" ? (
-        <img
-          className=" w-10 cursor-pointer"
-          src={isFavorite ? unsavedSVG : savedSVG}
-          alt={"floppy disc icon"}
-          title={isFavorite ? "unsave" : "save"}
-        />
-      ) : isFavorite ? (
-        "Remove from favorites"
-      ) : (
-        "Add to favorites"
-      )}
+    <button
+      onClick={handleClick}
+      className={`cursor-pointer ${
+        type === "text" && "px-4 py-2 border rounded dark:bg-white text-black"
+      }`}
+    >
+      {type === "icon" ? icon : text}
     </button>
   );
 };

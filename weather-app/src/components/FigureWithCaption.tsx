@@ -1,19 +1,21 @@
 import type { ImgHTMLAttributes } from "react";
 
-interface Props extends ImgHTMLAttributes<HTMLImageElement> {
+interface FigureWithCaptionProps extends ImgHTMLAttributes<HTMLImageElement> {
+  src: string;
+  alt: string;
   caption: string;
+  imgClassName?: string;
 }
 
 export const FigureWithCaption = ({
-  src,
-  alt,
   caption,
   className = "",
+  imgClassName,
   ...props
-}: Props) => {
+}: FigureWithCaptionProps) => {
   return (
     <figure className={className}>
-      <img src={src} alt={alt} {...props} />
+      <img {...props} className={imgClassName} />
       <figcaption>{caption}</figcaption>
     </figure>
   );

@@ -35,7 +35,12 @@
   - handles attempts to access nonexistent pages
 
 - Loading state:
+
   - a spinner or appropriate text is used to inform the user that a resource is being loaded
+
+- Responsiveness
+
+- Simulate Error Boundary application in details page
 
 ## How to run
 

@@ -17,18 +17,19 @@ export const Home = () => {
   } = useWeatherSearch();
 
   return (
-    <div className=" flex flex-col items-center gap-12 wrapper">
-      <div className=" flex flex-col items-center gap-24">
+    <main className=" flex flex-col items-center gap-12 wrapper">
+      <section className=" flex flex-col items-center gap-24">
         <h1 className=" main-title pt-20 ">Welcome to Weather App</h1>
         <form
           onSubmit={handleSubmit}
           className=" flex flex-col items-center gap-12 "
         >
-          <label className=" flex flex-col gap-y-6 text-3xl relative dark:text-white">
+          <label className=" flex flex-col gap-y-6 text-3xl relative">
             Check out any city's current weather
             <input
               list={searchValue ? "suggestions" : "recent"}
               value={searchValue}
+              placeholder="Enter a city"
               minLength={2}
               required
               onChange={handleSearchChange}
@@ -53,9 +54,9 @@ export const Home = () => {
             )}
           </label>
         </form>
-      </div>
+      </section>
       {(isLoading || isError) && <FallbackCard loading={isLoading} />}
       {data && <PresentationalInfoCard data={data} />}
-    </div>
+    </main>
   );
 };

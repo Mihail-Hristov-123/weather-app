@@ -1,4 +1,4 @@
-import { useEffect, type FormEvent } from "react";
+import { useEffect, useRef, type FormEvent } from "react";
 import {
   useGetAutocompleteRecommendationsQuery,
   useLazyGetCurrentWeatherByCityQuery,
@@ -16,6 +16,7 @@ export const useWeatherSearch = () => {
 
   const dispatch = useAppDispatch();
 
+  const searchRef = useRef<HTMLInputElement | null>(null);
   const [trigger, { data, isLoading, isError }] =
     useLazyGetCurrentWeatherByCityQuery();
 
@@ -25,6 +26,7 @@ export const useWeatherSearch = () => {
     dispatch(resetSearch());
     dispatch(addToHistory(searchValue));
     await trigger(query);
+    searchRef.current?.blur();
   };
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) =>
@@ -45,6 +47,7 @@ export const useWeatherSearch = () => {
     searchValue,
     handleSubmit,
     isLoading,
+    searchRef,
     suggestions,
     isError,
     data,

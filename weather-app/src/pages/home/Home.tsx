@@ -13,6 +13,7 @@ export const Home = () => {
     suggestions,
     history,
     data,
+    searchRef,
     handleSearchChange,
   } = useWeatherSearch();
 
@@ -31,6 +32,7 @@ export const Home = () => {
               value={searchValue}
               placeholder="Enter a city"
               minLength={2}
+              ref={searchRef}
               required
               onChange={handleSearchChange}
               className="border-3 relative rounded-4xl p-2 pl-10"

@@ -13,12 +13,12 @@ export const Datalist = <T,>({
 }: DatalistProps<T>) => {
   return (
     <datalist id={id}>
-      {options.map((item) => {
+      {options.map((item, i) => {
         const value = getOptionValue(item);
         const label = getOptionLabel?.(item) || value;
 
         return (
-          <option key={value} value={value}>
+          <option key={value + i} value={value}>
             {label}
           </option>
         );

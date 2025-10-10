@@ -1,11 +1,21 @@
 import { useNavigate } from "react-router";
 import infoSVG from "@/assets/info.svg";
 import { Routes } from "@/routes";
+import { formulateLocationString } from "@/utils/formulateLocationString";
 
-export const InfoButton = ({ cityName }: { cityName: string }) => {
+export const InfoButton = ({
+  city,
+  country,
+}: {
+  city: string;
+  country: string;
+}) => {
   const navigate = useNavigate();
 
-  const handleClick = () => navigate(`${Routes.FORECASTS}/${cityName}`);
+  const encodedLocation = encodeURIComponent(
+    formulateLocationString(city, country)
+  );
+  const handleClick = () => navigate(`${Routes.FORECASTS}/${encodedLocation}`);
 
   return (
     <button

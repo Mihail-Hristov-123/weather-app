@@ -1,7 +1,7 @@
-export const LoadingDetails = ({ cityName }: { cityName: string }) => (
+export const LoadingDetails = ({ location }: { location: string }) => (
   <div className=" wrapper">
     <h1 className=" main-title">
-      Loading detailed <span className="capitalize">{cityName}</span>{" "}
+      Loading detailed <span className="capitalize">{location}</span>{" "}
       forecast...
     </h1>
   </div>

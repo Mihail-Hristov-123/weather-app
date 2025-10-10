@@ -35,7 +35,7 @@ export const Home = () => {
               ref={searchRef}
               required
               onChange={handleSearchChange}
-              className="border-3 relative rounded-4xl p-2 pl-10"
+              className="border-3 relative rounded-4xl  py-2 pl-10"
               type="search"
             />
             <button
@@ -50,8 +50,7 @@ export const Home = () => {
               <Datalist
                 options={suggestions}
                 id="suggestions"
-                getOptionValue={(s) => s.name}
-                getOptionLabel={(s) => `${s.name}, ${s.country}`}
+                getOptionValue={(s) => `${s.name}, ${s.country}`}
               />
             )}
           </label>

@@ -12,7 +12,7 @@ export const Favorites = () => {
       <section className=" flex flex-wrap gap-6 justify-around px-6 pb-12 ">
         {favoriteLocations.length ? (
           favoriteLocations.map((location) => (
-            <InfoCard key={location} cityName={location} />
+            <InfoCard key={location} location={location} />
           ))
         ) : (
           <h2 className="text-4xl">You haven't pinned any locations yet.</h2>

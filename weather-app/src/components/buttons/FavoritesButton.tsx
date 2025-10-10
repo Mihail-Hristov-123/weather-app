@@ -1,7 +1,6 @@
 import savedSVG from "@/assets/save.svg";
 import unsavedSVG from "@/assets/unsave.svg";
-import { useFavorites } from "@/hooks/useFavorites";
-import { formulateLocationString } from "@/utils/formulateLocationString";
+import { useFavoriteLocation } from "@/hooks/useFavoriteLocation";
 
 interface FavoritesButtonProps {
   city: string;
@@ -14,11 +13,7 @@ export const FavoritesButton = ({
   country,
   type = "icon",
 }: FavoritesButtonProps) => {
-  const { checkIsFavorite, updateFavoriteStatus } = useFavorites();
-
-  const locationString = formulateLocationString(city, country);
-  const isFavorite = checkIsFavorite(locationString);
-  const handleClick = () => updateFavoriteStatus(locationString);
+  const { isFavorite, handleSave } = useFavoriteLocation(city, country);
 
   const text = isFavorite ? "Remove from favorites" : "Add to favorites";
 
@@ -33,7 +28,7 @@ export const FavoritesButton = ({
 
   return (
     <button
-      onClick={handleClick}
+      onClick={handleSave}
       className={`cursor-pointer ${
         type === "text" && "px-4 py-2 border rounded dark:bg-white text-black"
       }`}

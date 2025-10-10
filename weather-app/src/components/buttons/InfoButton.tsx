@@ -1,7 +1,6 @@
-import { useNavigate } from "react-router";
 import infoSVG from "@/assets/info.svg";
-import { Routes } from "@/routes";
-import { formulateLocationString } from "@/utils/formulateLocationString";
+
+import { useNavigationToDetails } from "@/hooks/useNavigationToDetails";
 
 export const InfoButton = ({
   city,
@@ -10,18 +9,13 @@ export const InfoButton = ({
   city: string;
   country: string;
 }) => {
-  const navigate = useNavigate();
-
-  const encodedLocation = encodeURIComponent(
-    formulateLocationString(city, country)
-  );
-  const handleClick = () => navigate(`${Routes.FORECASTS}/${encodedLocation}`);
+  const { navigateToDetails } = useNavigationToDetails(city, country);
 
   return (
     <button
       className=" w-10 cursor-pointer"
       title="check details"
-      onClick={handleClick}
+      onClick={navigateToDetails}
     >
       <img src={infoSVG} alt="info icon" />
     </button>

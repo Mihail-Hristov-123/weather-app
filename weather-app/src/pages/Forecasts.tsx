@@ -40,7 +40,7 @@ export const Forecasts = () => {
 
       <section className=" flex flex-wrap gap-x-10 gap-y-8 justify-center content-center">
         {currentCities.map((city) => (
-          <InfoCard location={city} />
+          <InfoCard location={city} key={city} />
         ))}
       </section>
       <menu className=" flex justify-around mt-12 mb-8 w-1/8">

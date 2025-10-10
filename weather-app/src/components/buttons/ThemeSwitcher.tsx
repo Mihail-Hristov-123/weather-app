@@ -1,6 +1,6 @@
 import darkModeSVG from "@/assets/dark-mode.svg";
 import lightModeSVG from "@/assets/light-mode.svg";
-import { useThemeContext } from "@/contexts/theme/useTheme";
+import { useThemeContext } from "@/hooks/useTheme";
 
 export const ThemeSwitcher = () => {
   const { toggleDarkMode, darkModeOn } = useThemeContext();

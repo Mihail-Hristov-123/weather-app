@@ -1,13 +1,14 @@
 import { WeatherCard } from "@/components/cards/WeatherCard";
-import { useDetails } from "./useDetails";
+import { useDetails } from "@/hooks/useDetails";
 import { NotFound } from "@/pages/NotFound";
 import { LoadingDetails } from "@/components/LoadingDetails";
 import { FavoritesButton } from "@/components/buttons/FavoritesButton";
 
 export const Details = () => {
-  const { data, error, isLoading, cityName, futureForecasts } = useDetails();
+  const { data, error, isLoading, cityLocation, futureForecasts } =
+    useDetails();
 
-  if (isLoading) return <LoadingDetails cityName={cityName} />;
+  if (isLoading) return <LoadingDetails location={cityLocation} />;
   if (error || !data || !futureForecasts) return <NotFound />;
 
   const { current, location } = data;
@@ -30,11 +31,7 @@ export const Details = () => {
   return (
     <main className="wrapper flex flex-col items-center gap-18">
       <h1 className="main-title text-center">
-        Detailed{" "}
-        <span className="capitalize">
-          {cityName}, {location.country}
-        </span>{" "}
-        forecast
+        Detailed <span className="capitalize">{cityLocation}</span> forecast
       </h1>
 
       <article className="w-1/2 bg-gray-800 dark:bg-white text-white text-2xl dark:text-black rounded-2xl p-8 mb-12 grid grid-cols-2 grid-rows-7 gap-2 justify-items-center">
@@ -48,7 +45,11 @@ export const Details = () => {
         ))}
       </article>
 
-      <FavoritesButton cityName={cityName} type="text" />
+      <FavoritesButton
+        city={location.name}
+        country={location.country}
+        type="text"
+      />
 
       <h2 className="text-4xl text-center py-12">
         Forecast for the next 5 days

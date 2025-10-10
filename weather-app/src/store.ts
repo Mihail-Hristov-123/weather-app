@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { weatherApi } from "./services/weatherApi";
-import searchReducer from "./pages/home/searchSlice";
-import favoritesReducer from "./pages/favorites/favoritesSlice";
-import paginationReducer from "./pages/forecasts/paginationSlice";
+import searchReducer from "./slices/searchSlice";
+import favoritesReducer from "./slices/favoritesSlice";
+import paginationReducer from "./slices/paginationSlice";
 export const store = configureStore({
   reducer: {
     [weatherApi.reducerPath]: weatherApi.reducer,

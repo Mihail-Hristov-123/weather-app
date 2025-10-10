@@ -1,18 +1,18 @@
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/typedHooks";
-import { addFavorite, removeOneFavorite } from "./favoritesSlice";
+import { addFavorite, removeOneFavorite } from "../slices/favoritesSlice";
 
 export const useFavorites = () => {
   const favoriteLocations = useAppSelector((state) => state.favorites);
   const dispatch = useAppDispatch();
 
-  const updateFavoriteStatus = (cityName: string) => {
-    const isFavorite = checkIsFavorite(cityName);
-    dispatch(isFavorite ? removeOneFavorite(cityName) : addFavorite(cityName));
+  const updateFavoriteStatus = (location: string) => {
+    const isFavorite = checkIsFavorite(location);
+    dispatch(isFavorite ? removeOneFavorite(location) : addFavorite(location));
   };
 
-  const checkIsFavorite = (cityName: string) => {
-    return favoriteLocations.includes(cityName);
+  const checkIsFavorite = (location: string) => {
+    return favoriteLocations.includes(location);
   };
 
   useEffect(() => {

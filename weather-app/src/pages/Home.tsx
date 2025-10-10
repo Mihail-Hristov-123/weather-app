@@ -1,5 +1,5 @@
 import { PresentationalInfoCard } from "@/components/cards/subcards/PresentationalInfoCard";
-import { useWeatherSearch } from "./useWeatherSearch";
+import { useWeatherSearch } from "@/hooks/useWeatherSearch";
 import searchSVG from "@/assets/search.svg";
 import { FallbackCard } from "@/components/cards/FallbackCard";
 import { Datalist } from "@/components/Datalist";
@@ -35,7 +35,7 @@ export const Home = () => {
               ref={searchRef}
               required
               onChange={handleSearchChange}
-              className="border-3 relative rounded-4xl p-2 pl-10"
+              className="border-3 relative rounded-4xl  py-2 pl-10"
               type="search"
             />
             <button
@@ -50,8 +50,7 @@ export const Home = () => {
               <Datalist
                 options={suggestions}
                 id="suggestions"
-                getOptionValue={(s) => s.name}
-                getOptionLabel={(s) => `${s.name}, ${s.country}`}
+                getOptionValue={(s) => `${s.name}, ${s.country}`}
               />
             )}
           </label>

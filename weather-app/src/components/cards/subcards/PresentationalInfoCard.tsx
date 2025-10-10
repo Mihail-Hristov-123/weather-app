@@ -19,11 +19,11 @@ export const PresentationalInfoCard = ({ data }: Props) => {
   return (
     <article className="bg-gray-400 min-w-[18vw] p-2 px-4 flex flex-col items-center rounded-2xl relative transition-all duration-300 transform hover:-translate-y-2 hover:-translate-x-2 ">
       <menu className=" flex justify-between w-full gap-x-4 items-center p-6">
-        <FavoritesButton cityName={cityName} />
+        <FavoritesButton city={cityName} country={country} />
         <h3 className=" text-3xl font-extrabold">
           {cityName}, {country}
         </h3>
-        <InfoButton cityName={cityName} />
+        <InfoButton city={cityName} country={country} />
       </menu>
 
       <div className=" flex items-center justify-center gap-8 w-full">

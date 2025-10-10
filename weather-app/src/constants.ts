@@ -330,3 +330,5 @@ export const CITIES = [
   "Qena",
   "Luxor",
 ];
+
+export const ITEMS_PER_PAGE_CHOICES = [10, 20, 30, 50];

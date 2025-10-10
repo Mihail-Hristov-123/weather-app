@@ -4,8 +4,8 @@ import { useAppDispatch } from "@/typedHooks";
 import { decrementPage, incrementPage, setPage } from "./paginationSlice";
 import { usePagination } from "./usePagination";
 import { PageChangeButton } from "@/components/buttons/PageChangeButton";
-
-const ITEMS_PER_PAGE_CHOICES = [10, 20, 30, 50];
+import { Select } from "@/components/Select";
+import { ITEMS_PER_PAGE_CHOICES } from "@/constants";
 
 export const Forecasts = () => {
   const dispatch = useAppDispatch();
@@ -24,13 +24,14 @@ export const Forecasts = () => {
       <h1 className="main-title">Forecasts for popular locations</h1>
       <label className="text-3xl self-start mb-6  relative left-8">
         Show:{" "}
-        <select name="shownItemsCount" onChange={changeItemsPerPage}>
-          {ITEMS_PER_PAGE_CHOICES.map((count) => (
-            <option value={count} selected={itemsPerPage === count} key={count}>
-              {count}
-            </option>
-          ))}
-        </select>
+        <Select
+          name="shownItemsCount"
+          value={itemsPerPage}
+          onChange={changeItemsPerPage}
+          options={ITEMS_PER_PAGE_CHOICES.map((count) => ({
+            value: count,
+          }))}
+        />
       </label>
 
       <section className=" flex flex-wrap gap-x-10 gap-y-8 justify-center content-center">
@@ -45,24 +46,15 @@ export const Forecasts = () => {
           onClick={() => dispatch(decrementPage())}
         />
 
-        <select
+        <Select
           name="page"
-          className=" text-xl"
+          value={currentPage}
           onChange={(e) => dispatch(setPage(Number(e.target.value)))}
-        >
-          {[...Array(totalPages)].map((_, i) => {
-            const value = i + 1;
-            return (
-              <option
-                selected={currentPage === value}
-                value={value}
-                key={value}
-              >
-                {value}
-              </option>
-            );
-          })}
-        </select>
+          options={[...Array(totalPages)].map((_, i) => ({
+            value: i + 1,
+          }))}
+          className="text-xl"
+        />
 
         <PageChangeButton
           type="increment"

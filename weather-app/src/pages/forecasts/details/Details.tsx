@@ -2,6 +2,7 @@ import { WeatherCard } from "@/components/cards/WeatherCard";
 import { useDetails } from "./useDetails";
 import { NotFound } from "@/pages/NotFound";
 import { LoadingDetails } from "@/components/LoadingDetails";
+import { FavoritesButton } from "@/components/buttons/FavoritesButton";
 
 export const Details = () => {
   const { data, error, isLoading, cityName, futureForecasts } = useDetails();
@@ -27,7 +28,7 @@ export const Details = () => {
   ];
 
   return (
-    <div className="wrapper flex flex-col items-center gap-12">
+    <main className="wrapper flex flex-col items-center gap-18">
       <h1 className="main-title text-center">
         Detailed{" "}
         <span className="capitalize">
@@ -36,7 +37,7 @@ export const Details = () => {
         forecast
       </h1>
 
-      <article className="w-1/2 bg-gray-800 dark:bg-white text-white text-2xl dark:text-black rounded-2xl p-8 mb-48 grid grid-cols-2 grid-rows-7 gap-2 justify-items-center">
+      <article className="w-1/2 bg-gray-800 dark:bg-white text-white text-2xl dark:text-black rounded-2xl p-8 mb-12 grid grid-cols-2 grid-rows-7 gap-2 justify-items-center">
         <h2 className="text-4xl text-center col-span-2 row-span-2">
           Current weather conditions
         </h2>
@@ -47,13 +48,17 @@ export const Details = () => {
         ))}
       </article>
 
-      <h2 className="text-4xl text-center">Forecast for the next 5 days</h2>
+      <FavoritesButton cityName={cityName} type="text" />
 
-      <section className="flex flex-wrap justify-around gap-20 pb-[40vh]">
+      <h2 className="text-4xl text-center py-12">
+        Forecast for the next 5 days
+      </h2>
+
+      <section className="flex flex-wrap justify-around gap-20 pb-[30vh]">
         {futureForecasts.map((day) => (
           <WeatherCard key={day.date} data={day} />
         ))}
       </section>
-    </div>
+    </main>
   );
 };

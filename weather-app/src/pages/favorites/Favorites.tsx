@@ -5,7 +5,7 @@ export const Favorites = () => {
   const { favoriteLocations } = useFavorites();
 
   return (
-    <div className=" wrapper ">
+    <main className=" wrapper ">
       <h1 className=" main-title">
         Monitor the weather in your favorite locations
       </h1>
@@ -18,6 +18,6 @@ export const Favorites = () => {
           <h2 className="text-4xl">You haven't pinned any locations yet.</h2>
         )}
       </section>
-    </div>
+    </main>
   );
 };

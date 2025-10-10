@@ -20,7 +20,7 @@ export const Forecasts = () => {
   } = usePagination();
 
   return (
-    <div className=" flex flex-col items-center px-3 wrapper relative">
+    <main className=" flex flex-col items-center px-3 wrapper relative">
       <h1 className="main-title">Forecasts for popular locations</h1>
       <label className="text-3xl self-start mb-6  relative left-8">
         Show:{" "}
@@ -62,6 +62,6 @@ export const Forecasts = () => {
           onClick={() => dispatch(incrementPage())}
         />
       </menu>
-    </div>
+    </main>
   );
 };

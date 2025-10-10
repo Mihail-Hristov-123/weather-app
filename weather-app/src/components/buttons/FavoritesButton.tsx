@@ -28,7 +28,12 @@ export const FavoritesButton = ({
   );
 
   return (
-    <button onClick={handleClick} className="cursor-pointer">
+    <button
+      onClick={handleClick}
+      className={`cursor-pointer ${
+        type === "text" && "px-4 py-2 border rounded dark:bg-white text-black"
+      }`}
+    >
       {type === "icon" ? icon : text}
     </button>
   );

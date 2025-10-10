@@ -17,8 +17,8 @@ export const Home = () => {
   } = useWeatherSearch();
 
   return (
-    <div className=" flex flex-col items-center gap-12 wrapper">
-      <div className=" flex flex-col items-center gap-24">
+    <main className=" flex flex-col items-center gap-12 wrapper">
+      <section className=" flex flex-col items-center gap-24">
         <h1 className=" main-title pt-20 ">Welcome to Weather App</h1>
         <form
           onSubmit={handleSubmit}
@@ -54,9 +54,9 @@ export const Home = () => {
             )}
           </label>
         </form>
-      </div>
+      </section>
       {(isLoading || isError) && <FallbackCard loading={isLoading} />}
       {data && <PresentationalInfoCard data={data} />}
-    </div>
+    </main>
   );
 };
